@@ -1,59 +1,43 @@
 <div align="center">
-  <img src="./assets/panel_perfil.png" alt="SARAVIAH" width="100%" />
+  <img src="./assets/panel_perfil.png" alt="Portada de Jose SaraviaH con Miku y Teto" width="100%" />
 
-  <h1>SARAVIAH</h1>
+  <h1>Jose SaraviaH</h1>
 
   <p>
-    <strong>Systems and Telecommunications Engineering Student</strong><br />
-    Software Developer | Web, Mobile &amp; Tech Research
+    <strong>Estudiante de Ingeniería de Sistemas e Informática</strong><br />
+    <em>Desarrollo de software | Web, aplicaciones móviles y tecnología.</em>
   </p>
-
 </div>
 
 <br />
 
-<table width="100%">
-  <tr>
-    <td width="50%" valign="top">
-      <h3>👨‍💻 Sobre mí</h3>
-      <p>
-        👋 ¡Hola! Soy estudiante de <strong>Ingeniería de Sistemas y Telecomunicaciones</strong>, apasionado por el desarrollo de software y la creación de soluciones digitales.
-      </p>
-      <p>
-        📱💻 He creado <strong>aplicaciones móviles con React Native</strong> y <strong>aplicaciones web con React, Next.js y Angular</strong>, además de servicios backend con <strong>Java, Spring Boot y Python</strong>, combinando funcionalidad, diseño y buenas prácticas.
-      </p>
-      <p>
-        🚀 Mi objetivo es transformar ideas en soluciones digitales funcionales, intuitivas y bien estructuradas.
-      </p>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🔬 Investigación y Enfoque</h3>
-      <p>
-        Disfruto investigar nuevas tecnologías, experimentar con interfaces interactivas y entender cómo se organizan los sistemas desde su arquitectura hasta su despliegue.
-      </p>
-      <ul>
-        <li>🔎 <strong>Investigación tecnológica:</strong> exploración continua de herramientas modernas y flujos de desarrollo.</li>
-        <li>🧩 <strong>Arquitectura de software:</strong> organización modular, modelado UML y documentación técnica.</li>
-        <li>☁️ <strong>Servicios y nube:</strong> APIs, bases de datos relacionales, contenedores y despliegue continuo.</li>
-        <li>🛡️ <strong>Seguridad informática:</strong> fundamentos de redes y buenas prácticas de protección en aplicaciones.</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+---
+
+## Sobre mí
+
+<img align="right" src="./assets/chibis/miku-wave.svg" alt="Miku saludando" width="94" />
+
+¡Hola! Soy Jose, me gusta programar, crear páginas web y desarrollar aplicaciones. Disfruto experimentar con nuevas ideas, aprender tecnologías y convertir pequeños conceptos en experiencias digitales. Siempre estoy buscando algo nuevo que construir.
+
+<br clear="right" />
 
 ---
 
-## 🪐 Technology Ecosystem
+<img align="right" src="./assets/chibis/teto-point.svg" alt="Teto señalando el ecosistema tecnológico" width="88" />
 
-Cada especialidad funciona como un **sistema orbital independiente**, organizado en **lotes (Izquierda | Derecha)** para explorar mis conocimientos sin sobrecargar la vista.
+## Ecosistema tecnológico
+
+Cada especialidad se organiza como un sistema orbital independiente.
+
+<br clear="right" />
 
 <details open>
-  <summary><strong>📦 Lote 01 · Core &amp; Backend</strong> — <code>💻 Programming Languages</code> | <code>⚙️ Backend Development</code></summary>
+  <summary><strong>Programming Languages &nbsp;|&nbsp; Backend Development</strong></summary>
   <br />
   <table width="100%">
     <tr>
-      <th width="50%">💻 Programming Languages</th>
-      <th width="50%">⚙️ Backend Development</th>
+      <th width="50%">Programming Languages</th>
+      <th width="50%">Backend Development</th>
     </tr>
     <tr>
       <td width="50%" align="center" valign="top">
@@ -67,12 +51,12 @@ Cada especialidad funciona como un **sistema orbital independiente**, organizado
 </details>
 
 <details open>
-  <summary><strong>📦 Lote 02 · Frontend &amp; Mobile</strong> — <code>🎨 Frontend Development</code> | <code>📱 Mobile Development</code></summary>
+  <summary><strong>Frontend Development &nbsp;|&nbsp; Mobile Development</strong></summary>
   <br />
   <table width="100%">
     <tr>
-      <th width="50%">🎨 Frontend Development</th>
-      <th width="50%">📱 Mobile Development</th>
+      <th width="50%">Frontend Development</th>
+      <th width="50%">Mobile Development</th>
     </tr>
     <tr>
       <td width="50%" align="center" valign="top">
@@ -80,42 +64,42 @@ Cada especialidad funciona como un **sistema orbital independiente**, organizado
       </td>
       <td width="50%" align="center" valign="top">
         <img src="./assets/orbits/05-mobile-development.svg" alt="Sistema orbital — Mobile Development" width="100%" />
-        <p><sub>* Flutter en etapa de exploración y aprendizaje activo.</sub></p>
+        <p><sub>* Flutter en etapa de exploración.</sub></p>
       </td>
     </tr>
   </table>
 </details>
 
 <details>
-  <summary><strong>📦 Lote 03 · Databases &amp; Cloud</strong> — <code>🗄️ Databases</code> | <code>☁️ Cloud &amp; Deployment</code></summary>
+  <summary><strong>Databases &nbsp;|&nbsp; Cloud &amp; Infrastructure</strong></summary>
   <br />
   <table width="100%">
     <tr>
-      <th width="50%">🗄️ Databases</th>
-      <th width="50%">☁️ Cloud &amp; Deployment</th>
+      <th width="50%">Databases</th>
+      <th width="50%">Cloud &amp; Infrastructure</th>
     </tr>
     <tr>
       <td width="50%" align="center" valign="top">
         <img src="./assets/orbits/04-databases.svg" alt="Sistema orbital — Databases" width="100%" />
       </td>
       <td width="50%" align="center" valign="top">
-        <img src="./assets/orbits/07-cloud-deployment.svg" alt="Sistema orbital — Cloud and Deployment" width="100%" />
+        <img src="./assets/orbits/07-cloud-deployment.svg" alt="Sistema orbital — Cloud and Infrastructure" width="100%" />
       </td>
     </tr>
   </table>
 </details>
 
 <details>
-  <summary><strong>📦 Lote 04 · DevOps &amp; Design</strong> — <code>🛠️ DevOps &amp; Development Tools</code> | <code>📐 Software Design</code></summary>
+  <summary><strong>Tools &amp; DevOps &nbsp;|&nbsp; Software Design</strong></summary>
   <br />
   <table width="100%">
     <tr>
-      <th width="50%">🛠️ DevOps &amp; Development Tools</th>
-      <th width="50%">📐 Software Design</th>
+      <th width="50%">Tools &amp; DevOps</th>
+      <th width="50%">Software Design</th>
     </tr>
     <tr>
       <td width="50%" align="center" valign="top">
-        <img src="./assets/orbits/06-devops-tools.svg" alt="Sistema orbital — DevOps and Development Tools" width="100%" />
+        <img src="./assets/orbits/06-devops-tools.svg" alt="Sistema orbital — Tools and DevOps" width="100%" />
       </td>
       <td width="50%" align="center" valign="top">
         <img src="./assets/orbits/08-software-design.svg" alt="Sistema orbital — Software Design" width="100%" />
@@ -126,36 +110,41 @@ Cada especialidad funciona como un **sistema orbital independiente**, organizado
 
 ---
 
-## 🌱 Conocimientos y aprendizaje
+<img align="right" src="./assets/chibis/miku-curious.svg" alt="Miku curiosa" width="86" />
+
+## Conocimientos y aprendizaje
+
+<br clear="right" />
 
 <table width="100%">
   <tr>
     <td width="33%" valign="top">
-      <strong>✅ Áreas que ya he trabajado</strong>
+      <strong>Áreas que he trabajado</strong>
       <ul>
-        <li>Apps web con React, Next.js, Angular y backend.</li>
-        <li>Apps móviles multiplataforma con React Native.</li>
-        <li>Lógica de programación y POO.</li>
+        <li>Desarrollo de aplicaciones web.</li>
+        <li>Desarrollo de aplicaciones móviles.</li>
+        <li>Programación orientada a objetos.</li>
         <li>Bases de datos relacionales y SQL.</li>
-        <li>Diseño responsive y control de versiones.</li>
+        <li>Interfaces responsive.</li>
       </ul>
     </td>
     <td width="33%" valign="top">
-      <strong>🔧 Áreas que continúo desarrollando</strong>
+      <strong>Áreas que sigo desarrollando</strong>
       <ul>
-        <li>Diseño de APIs REST y persistencia de datos.</li>
-        <li>Arquitectura de software y modelado UML.</li>
-        <li>Contenedores y despliegue en la nube.</li>
-        <li>Sistemas de diseño y experiencia de usuario.</li>
+        <li>Arquitectura de software.</li>
+        <li>Diseño de APIs REST.</li>
+        <li>Persistencia y gestión de datos.</li>
+        <li>Integración de servicios.</li>
+        <li>Experiencia de usuario.</li>
       </ul>
     </td>
     <td width="33%" valign="top">
-      <strong>🔬 Áreas que estoy explorando</strong>
+      <strong>Áreas que estoy explorando</strong>
       <ul>
-        <li>Investigación tecnológica aplicada.</li>
-        <li>Fundamentos de ciberseguridad en apps.</li>
+        <li>Ciberseguridad aplicada.</li>
         <li>Redes y protección de la información.</li>
-        <li>Nuevas propuestas multiplataforma (Flutter).</li>
+        <li>Nuevas tecnologías de desarrollo.</li>
+        <li>Desarrollo multiplataforma.</li>
       </ul>
     </td>
   </tr>
@@ -163,11 +152,25 @@ Cada especialidad funciona como un **sistema orbital independiente**, organizado
 
 ---
 
+## Redes
+
 <div align="center">
-  <p><strong>SARAVIAH</strong> — <em>Building ideas into digital experiences.</em></p>
-  <p>
-    🐙 <a href="https://github.com/SaraviaH">GitHub</a> ·
-    📫 <a href="mailto:josesaraviahuaman@gmail.com">Email</a> ·
-    🌐 <a href="https://saraviah.github.io/SaraviaH/">Perfil Web Interactivo</a>
-  </p>
+  <a href="https://github.com/SaraviaH" title="GitHub">
+    <img src="./assets/logos/github.svg" alt="GitHub" width="34" height="34" />
+  </a>
+  <!-- Agrega aquí tus otras redes reales cuando tengas sus URLs configuradas -->
+</div>
+
+---
+
+<br />
+
+<div align="center">
+  <img src="./assets/terminal-footer.svg" alt="Terminal Linux de cierre de Jose SaraviaH" width="740" />
+
+  <br /><br />
+
+  <img src="./assets/chibis/teto-celebrate.svg" alt="Teto celebrando" width="84" />
+
+  <p><strong>Eso es todo por ahora. ¡Gracias por visitar mi perfil!</strong> ✦</p>
 </div>

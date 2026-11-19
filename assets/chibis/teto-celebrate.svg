@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Chibi de Teto celebrando">
+  <!-- Celebratory stars in Miku turquoise & Teto pink -->
+  <path d="M18 22 L20 17 L22 22 L27 24 L22 26 L20 31 L18 26 L13 24 Z" fill="#4FD1C5" opacity="0.9"/>
+  <path d="M100 20 L102 15 L104 20 L109 22 L104 24 L102 29 L100 24 L95 22 Z" fill="#F45B7A" opacity="0.9"/>
+  <circle cx="60" cy="10" r="2.2" fill="#1793D1" opacity="0.85"/>
+
+  <!-- Twin-drill curls bouncing outward -->
+  <g fill="#E64B6B" stroke="#1F1A28" stroke-width="2.1" stroke-linejoin="round">
+    <path d="M34 46 C20 44, 14 52, 20 60 C13 65, 14 76, 22 81 C18 88, 23 96, 31 94 C34 86, 34 75, 36 64 Z"/>
+    <path d="M20 59 C25 58, 30 60, 34 63" fill="none" stroke="#1F1A28" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M21 79 C26 77, 30 78, 33 81" fill="none" stroke="#1F1A28" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+  <g fill="#E64B6B" stroke="#1F1A28" stroke-width="2.1" stroke-linejoin="round">
+    <path d="M86 46 C100 44, 106 52, 100 60 C107 65, 106 76, 98 81 C102 88, 97 96, 89 94 C86 86, 86 75, 84 64 Z"/>
+    <path d="M100 59 C95 58, 90 60, 86 63" fill="none" stroke="#1F1A28" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M99 79 C94 77, 90 78, 87 81" fill="none" stroke="#1F1A28" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Both arms raised in celebration -->
+  <path d="M44 86 C35 80, 29 73, 27 65" fill="none" stroke="#25283B" stroke-width="7.5" stroke-linecap="round"/>
+  <path d="M44 86 C35 80, 29 73, 27 65" fill="none" stroke="#1F1A28" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="26" cy="63" r="4.3" fill="#FFE4D6" stroke="#1F1A28" stroke-width="1.8"/>
+
+  <path d="M76 86 C85 80, 91 73, 93 65" fill="none" stroke="#25283B" stroke-width="7.5" stroke-linecap="round"/>
+  <path d="M76 86 C85 80, 91 73, 93 65" fill="none" stroke="#1F1A28" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="94" cy="63" r="4.3" fill="#FFE4D6" stroke="#1F1A28" stroke-width="1.8"/>
+
+  <!-- Chibi body -->
+  <path d="M44 84 L76 84 L80 108 C80 111, 77 113, 74 113 L46 113 C43 113, 40 111, 40 108 Z" fill="#25283B" stroke="#1F1A28" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M48 84 L60 95 L72 84" fill="none" stroke="#F45B7A" stroke-width="2.2" stroke-linejoin="round"/>
+
+  <!-- Ribbon accents -->
+  <path d="M29 44 L36 37 L41 44 Z" fill="#F45B7A" stroke="#1F1A28" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M91 44 L84 37 L79 44 Z" fill="#F45B7A" stroke="#1F1A28" stroke-width="1.6" stroke-linejoin="round"/>
+
+  <!-- Head -->
+  <ellipse cx="60" cy="57" rx="26" ry="25" fill="#FFE4D6" stroke="#1F1A28" stroke-width="2.2"/>
+
+  <!-- Pink hair top & bangs -->
+  <path d="M33 55 C32 34, 44 22, 60 22 C76 22, 88 34, 87 55 C82 45, 76 41, 71 39 L68 50 L62 41 L57 51 L51 41 L46 49 C41 44, 37 48, 33 55 Z" fill="#F45B7A" stroke="#1F1A28" stroke-width="2.2" stroke-linejoin="round"/>
+  <path d="M46 31 C53 27, 67 27, 74 31" fill="none" stroke="#FBCFE8" stroke-width="2.2" stroke-linecap="round" opacity="0.75"/>
+
+  <!-- Joyful ^ ^ closed eyes -->
+  <path d="M44 60 Q49 54.5 54 60" fill="none" stroke="#1F1A28" stroke-width="2.4" stroke-linecap="round"/>
+  <path d="M66 60 Q71 54.5 76 60" fill="none" stroke="#1F1A28" stroke-width="2.4" stroke-linecap="round"/>
+
+  <!-- Blush -->
+  <ellipse cx="42" cy="66.5" rx="3.8" ry="2" fill="#FDA4AF" opacity="0.8"/>
+  <ellipse cx="78" cy="66.5" rx="3.8" ry="2" fill="#FDA4AF" opacity="0.8"/>
+
+  <!-- Big joyful smile -->
+  <path d="M54.5 67.5 Q60 76 65.5 67.5 Z" fill="#F45B7A" stroke="#1F1A28" stroke-width="1.5" stroke-linejoin="round"/>
+</svg>

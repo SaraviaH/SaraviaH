@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 276" width="760" height="276" role="img" aria-label="Terminal Linux de cierre de Jose SaraviaH">
+  <style>
+    .mono { font-family: Consolas, Menlo, "DejaVu Sans Mono", "Courier New", monospace; }
+    .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+    @keyframes cursorBlink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    @keyframes starPulse {
+      0%, 100% { opacity: 0.35; }
+      50% { opacity: 0.95; }
+    }
+    .cursor { animation: cursorBlink 1.1s steps(1) infinite; }
+    .star-a { animation: starPulse 3.6s ease-in-out infinite; }
+    .star-b { animation: starPulse 4.2s ease-in-out 1.4s infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .cursor, .star-a, .star-b { animation: none; opacity: 1; }
+    }
+  </style>
+
+  <!-- Outer Linux Terminal Window -->
+  <rect x="2" y="2" width="756" height="272" rx="12" fill="#0D1117" stroke="#30363D" stroke-width="1.5"/>
+
+  <!-- Minimalist Top Bar -->
+  <path d="M2 14 C2 7.4, 7.4 2, 14 2 L746 2 C752.6 2, 758 7.4, 758 14 L758 38 L2 38 Z" fill="#161B22"/>
+  <line x1="2" y1="38" x2="758" y2="38" stroke="#30363D" stroke-width="1"/>
+
+  <!-- Discreet Window Indicators -->
+  <circle cx="24" cy="20" r="5" fill="#F45B7A" opacity="0.85"/>
+  <circle cx="42" cy="20" r="5" fill="#E3B341" opacity="0.85"/>
+  <circle cx="60" cy="20" r="5" fill="#3FB950" opacity="0.85"/>
+
+  <!-- Terminal Title -->
+  <text x="380" y="24" text-anchor="middle" class="mono" font-size="12" fill="#8B949E">jose@saraviah: ~  —  bash</text>
+
+  <!-- Subtle Miku (turquoise) & Teto (pink) star accents on top right -->
+  <path class="star-a" d="M716 19 L717.5 15 L719 19 L723 20.5 L719 22 L717.5 26 L716 22 L712 20.5 Z" fill="#4FD1C5"/>
+  <path class="star-b" d="M736 19 L737.2 16 L738.4 19 L741.4 20.2 L738.4 21.4 L737.2 24.4 L736 21.4 L733 20.2 Z" fill="#F45B7A"/>
+
+  <!-- Terminal Session Content -->
+  <!-- Command 1 -->
+  <text x="28" y="74" class="mono" font-size="14">
+    <tspan fill="#3FB950" font-weight="700">jose@saraviah</tspan><tspan fill="#8B949E">:</tspan><tspan fill="#1793D1" font-weight="700">~</tspan><tspan fill="#8B949E">$ </tspan><tspan fill="#E6EDF3">whoami</tspan>
+  </text>
+  <text x="28" y="102" class="mono" font-size="15" font-weight="700" fill="#E6EDF3">Jose SaraviaH</text>
+
+  <!-- Command 2 -->
+  <text x="28" y="140" class="mono" font-size="14">
+    <tspan fill="#3FB950" font-weight="700">jose@saraviah</tspan><tspan fill="#8B949E">:</tspan><tspan fill="#1793D1" font-weight="700">~</tspan><tspan fill="#8B949E">$ </tspan><tspan fill="#E6EDF3">echo "Gracias por visitar mi perfil"</tspan>
+  </text>
+  <text x="28" y="168" class="mono" font-size="14" fill="#8B949E">Construyendo ideas, aprendiendo y programando.</text>
+
+  <!-- Command 3 (Active Prompt + Blinking Cursor) -->
+  <text x="28" y="208" class="mono" font-size="14">
+    <tspan fill="#3FB950" font-weight="700">jose@saraviah</tspan><tspan fill="#8B949E">:</tspan><tspan fill="#1793D1" font-weight="700">~</tspan><tspan fill="#8B949E">$ </tspan>
+  </text>
+  <rect class="cursor" x="172" y="194" width="9" height="17" rx="1.5" fill="#1793D1"/>
+
+  <!-- Subtle bottom status bar inside terminal -->
+  <line x1="20" y1="234" x2="740" y2="234" stroke="#30363D" stroke-width="1" stroke-opacity="0.65"/>
+  <circle cx="30" cy="253" r="3.2" fill="#3FB950"/>
+  <text x="41" y="257" class="mono" font-size="11.5" fill="#8B949E">status: construyendo y aprendiendo</text>
+  <text x="734" y="257" text-anchor="end" class="mono" font-size="11.5" fill="#8B949E">UTF-8  ·  LF  ·  bash</text>
+</svg>

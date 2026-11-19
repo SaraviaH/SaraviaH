@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Chibi de Miku con expresión de curiosidad">
+  <!-- Subtle curiosity sparkles -->
+  <path d="M96 20 L98 15 L100 20 L105 22 L100 24 L98 29 L96 24 L91 22 Z" fill="#4FD1C5" opacity="0.9"/>
+  <circle cx="105" cy="34" r="2" fill="#1793D1" opacity="0.8"/>
+
+  <!-- Slightly tilted head/body group for curious look -->
+  <g transform="rotate(-6 60 64)">
+    <!-- Back twin-tails -->
+    <path d="M35 48 C19 52, 14 74, 18 96 C23 103, 32 99, 33 88 C34 76, 36 64, 41 56 Z" fill="#38B2AC" stroke="#18222F" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M85 48 C101 52, 106 74, 102 96 C97 103, 88 99, 87 88 C86 76, 84 64, 79 56 Z" fill="#38B2AC" stroke="#18222F" stroke-width="2.2" stroke-linejoin="round"/>
+
+    <!-- Chibi body -->
+    <path d="M44 84 L76 84 L79 107 C79 110, 76 112, 73 112 L47 112 C44 112, 41 110, 41 107 Z" fill="#E6EDF3" stroke="#18222F" stroke-width="2.2" stroke-linejoin="round"/>
+    <polygon points="57.5,89 62.5,89 63.5,105 60,109 56.5,105" fill="#38B2AC" stroke="#18222F" stroke-width="1.6" stroke-linejoin="round"/>
+
+    <!-- Hair ties -->
+    <rect x="28" y="40" width="9" height="14" rx="2.5" transform="rotate(-18 32 47)" fill="#1E293B" stroke="#F45B7A" stroke-width="1.8"/>
+    <rect x="83" y="40" width="9" height="14" rx="2.5" transform="rotate(18 88 47)" fill="#1E293B" stroke="#F45B7A" stroke-width="1.8"/>
+
+    <!-- Head -->
+    <ellipse cx="60" cy="57" rx="26" ry="25" fill="#FFE4D6" stroke="#18222F" stroke-width="2.2"/>
+
+    <!-- Hair & bangs -->
+    <path d="M33 55 C32 34, 44 22, 60 22 C76 22, 88 34, 87 55 C83 45, 78 40, 72 38 L71 50 L64 41 L60 52 L55 41 L49 50 L47 39 C41 42, 37 47, 33 55 Z" fill="#4FD1C5" stroke="#18222F" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M46 31 C53 27, 67 27, 74 31" fill="none" stroke="#B2F5EA" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
+
+    <!-- Wide curious sparkling eyes -->
+    <ellipse cx="49" cy="60" rx="4.8" ry="5.6" fill="#18222F"/>
+    <ellipse cx="49.5" cy="61.5" rx="3.2" ry="3.4" fill="#38B2AC"/>
+    <circle cx="47.5" cy="58" r="1.7" fill="#FFFFFF"/>
+    <circle cx="51" cy="63" r="0.9" fill="#FFFFFF"/>
+
+    <ellipse cx="71" cy="60" rx="4.8" ry="5.6" fill="#18222F"/>
+    <ellipse cx="71.5" cy="61.5" rx="3.2" ry="3.4" fill="#38B2AC"/>
+    <circle cx="69.5" cy="58" r="1.7" fill="#FFFFFF"/>
+    <circle cx="73" cy="63" r="0.9" fill="#FFFFFF"/>
+
+    <!-- Soft blush -->
+    <ellipse cx="41.5" cy="66.5" rx="3.5" ry="1.9" fill="#FDA4AF" opacity="0.65"/>
+    <ellipse cx="78.5" cy="66.5" rx="3.5" ry="1.9" fill="#FDA4AF" opacity="0.65"/>
+
+    <!-- Small curious 'o' mouth -->
+    <ellipse cx="60" cy="70.5" rx="2.6" ry="3" fill="#F45B7A" stroke="#18222F" stroke-width="1.4"/>
+
+    <!-- Hand thoughtfully touching cheek -->
+    <circle cx="72" cy="76" r="4.6" fill="#FFE4D6" stroke="#18222F" stroke-width="1.8"/>
+  </g>
+</svg>
