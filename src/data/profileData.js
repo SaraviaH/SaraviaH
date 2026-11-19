@@ -12,9 +12,9 @@
       focus: 'Software Developer | Web, Mobile & Tech Research',
       heroImage: {
         src: './assets/panel_perfil.png',
-        alt: 'Ilustración principal del perfil de SARAVIAH',
-        width: 1774,
-        height: 887
+        alt: 'Portada de Jose SaraviaH con Miku, Teto y Neru',
+        width: 1024,
+        height: 512
       },
       description: [
         'Soy estudiante de Ingeniería de Sistemas y Telecomunicaciones, apasionado por el desarrollo de software, la creación de soluciones digitales y la investigación tecnológica.',

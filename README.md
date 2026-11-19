@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/panel_perfil.png" alt="Portada de Jose SaraviaH con Miku y Teto" width="100%" />
+  <img src="./assets/panel_perfil.png" alt="Portada de Jose SaraviaH con Miku, Teto y Neru" width="100%" />
 
   <h1>Jose SaraviaH</h1>
 
