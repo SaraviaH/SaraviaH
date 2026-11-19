@@ -15,21 +15,32 @@
 
 ## Sobre mí
 
-<img align="right" src="./assets/chibis/miku-wave.svg" alt="Miku saludando" width="94" />
+<img align="left" src="./assets/chibis/miku-wave.png" alt="Miku saludando" width="108" />
+<img align="right" src="./assets/chibis/teto-wave.png" alt="Teto saludando" width="108" />
 
-¡Hola! Soy Jose, me gusta programar, crear páginas web y desarrollar aplicaciones. Disfruto experimentar con nuevas ideas, aprender tecnologías y convertir pequeños conceptos en experiencias digitales. Siempre estoy buscando algo nuevo que construir.
+<p align="center">
+  ¡Hola! Soy <strong>Jose</strong> y disfruto dar forma a ideas a través del código. Me gusta crear páginas web y aplicaciones móviles cuidando tanto la experiencia visual como que todo funcione de forma clara, ordenada y fluida.
+</p>
 
-<br clear="right" />
+<p align="center">
+  Me mueve la curiosidad: suelo experimentar con enfoques nuevos, investigar cómo funcionan las cosas por dentro y aprender algo distinto en cada proyecto. Si un concepto puede convertirse en una experiencia digital útil y bien hecha, me entusiasma construirlo.
+</p>
+
+<br clear="both" />
 
 ---
 
-<img align="right" src="./assets/chibis/teto-point.svg" alt="Teto señalando el ecosistema tecnológico" width="88" />
-
 ## Ecosistema tecnológico
 
-Cada especialidad se organiza como un sistema orbital independiente.
+<img align="left" src="./assets/chibis/teto-point.png" alt="Teto señalando el ecosistema" width="100" />
+<img align="right" src="./assets/chibis/neru-tech.png" alt="Neru con dispositivo tecnológico" width="100" />
 
-<br clear="right" />
+<p align="center">
+  Estas son las tecnologías y herramientas con las que trabajo, organizadas como sistemas orbitales independientes según su función.<br />
+  Puedes expandir cada bloque para ver desde los lenguajes y servidores hasta el diseño y despliegue en la nube.
+</p>
+
+<br clear="both" />
 
 <details open>
   <summary><strong>Programming Languages &nbsp;|&nbsp; Backend Development</strong></summary>
@@ -110,11 +121,16 @@ Cada especialidad se organiza como un sistema orbital independiente.
 
 ---
 
-<img align="right" src="./assets/chibis/miku-curious.svg" alt="Miku curiosa" width="86" />
-
 ## Conocimientos y aprendizaje
 
-<br clear="right" />
+<img align="left" src="./assets/chibis/miku-curious.png" alt="Miku curiosa" width="98" />
+<img align="right" src="./assets/chibis/neru-thumbsup.png" alt="Neru pulgar arriba" width="98" />
+
+<p align="center">
+  Me gusta mostrar mi progreso de forma honesta: lo que ya he aplicado en la práctica, lo que estoy perfeccionando día a día y las áreas nuevas en las que estoy dando mis primeros pasos.
+</p>
+
+<br clear="both" />
 
 <table width="100%">
   <tr>
@@ -154,12 +170,18 @@ Cada especialidad se organiza como un sistema orbital independiente.
 
 ## Redes
 
+<img align="left" src="./assets/chibis/miku-phone.png" alt="Miku con teléfono" width="96" />
+<img align="right" src="./assets/chibis/teto-warm.png" alt="Teto sonriendo" width="96" />
+
 <div align="center">
+  <p>Si quieres ver en qué ando trabajando o conectar conmigo, puedes encontrarme aquí:</p>
   <a href="https://github.com/SaraviaH" title="GitHub">
-    <img src="./assets/logos/github.svg" alt="GitHub" width="34" height="34" />
+    <img src="./assets/logos/github.svg" alt="GitHub" width="38" height="38" />
   </a>
   <!-- Agrega aquí tus otras redes reales cuando tengas sus URLs configuradas -->
 </div>
+
+<br clear="both" />
 
 ---
 
@@ -170,7 +192,11 @@ Cada especialidad se organiza como un sistema orbital independiente.
 
   <br /><br />
 
-  <img src="./assets/chibis/teto-celebrate.svg" alt="Teto celebrando" width="84" />
+  <img src="./assets/chibis/miku-cheer.png" alt="Miku animando" width="112" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./assets/chibis/neru-bye.png" alt="Neru saludando" width="112" />
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <img src="./assets/chibis/teto-celebrate.png" alt="Teto celebrando" width="112" />
 
-  <p><strong>Eso es todo por ahora. ¡Gracias por visitar mi perfil!</strong> ✦</p>
+  <p><strong>Eso es todo por ahora. ¡Gracias por pasarte por mi perfil!</strong> ✦</p>
 </div>
