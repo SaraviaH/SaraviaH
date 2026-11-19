@@ -21,11 +21,74 @@ Mi objetivo es transformar ideas en soluciones digitales funcionales, intuitivas
 
 ---
 
-## Ecosistema tecnológico
+## Technology Ecosystem
 
-<div align="center">
-  <img src="./assets/ecosystem-network.svg" alt="Red interconectada de ámbitos tecnológicos" width="100%" />
-</div>
+Cada especialidad opera como un sistema orbital independiente. Expande cada categoría para explorar las tecnologías y herramientas que utilizo.
+
+<details open>
+  <summary><strong>01 · Programming Languages</strong> — Lenguajes principales para desarrollo web, backend, móvil y datos</summary>
+  <br />
+  <div align="center">
+    <img src="./assets/orbits/01-programming-languages.svg" alt="Sistema orbital — Programming Languages" width="520" />
+  </div>
+</details>
+
+<details>
+  <summary><strong>02 · Backend Development</strong> — Servicios de servidor, APIs REST y contenedores (Java y Spring Boot)</summary>
+  <br />
+  <div align="center">
+    <img src="./assets/orbits/02-backend-development.svg" alt="Sistema orbital — Backend Development" width="520" />
+  </div>
+</details>
+
+<details>
+  <summary><strong>03 · Frontend Development</strong> — Frameworks principales (Angular y React), estilos y librerías visuales</summary>
+  <br />
+  <div align="center">
+    <img src="./assets/orbits/03-frontend-development.svg" alt="Sistema orbital — Frontend Development" width="600" />
+  </div>
+</details>
+
+<details>
+  <summary><strong>04 · Databases</strong> — Motores relacionales y almacenamiento conectado al ecosistema backend y móvil</summary>
+  <br />
+  <div align="center">
+    <img src="./assets/orbits/04-databases.svg" alt="Sistema orbital — Databases" width="520" />
+  </div>
+</details>
+
+<details>
+  <summary><strong>05 · Mobile Development</strong> — Aplicaciones móviles multiplataforma, persistencia local y nube</summary>
+  <br />
+  <div align="center">
+    <img src="./assets/orbits/05-mobile-development.svg" alt="Sistema orbital — Mobile Development" width="520" />
+  </div>
+  <p align="center"><sub>* Flutter en etapa de exploración y aprendizaje activo.</sub></p>
+</details>
+
+<details>
+  <summary><strong>06 · DevOps &amp; Development Tools</strong> — Control de versiones, contenedores, builds e IDEs</summary>
+  <br />
+  <div align="center">
+    <img src="./assets/orbits/06-devops-tools.svg" alt="Sistema orbital — DevOps and Development Tools" width="520" />
+  </div>
+</details>
+
+<details>
+  <summary><strong>07 · Cloud &amp; Deployment</strong> — Plataformas de despliegue continuo, BaaS y gestión multimedia</summary>
+  <br />
+  <div align="center">
+    <img src="./assets/orbits/07-cloud-deployment.svg" alt="Sistema orbital — Cloud and Deployment" width="520" />
+  </div>
+</details>
+
+<details>
+  <summary><strong>08 · Software Design</strong> — Prototipado de interfaces, modelado UML y diseño estructural</summary>
+  <br />
+  <div align="center">
+    <img src="./assets/orbits/08-software-design.svg" alt="Sistema orbital — Software Design" width="520" />
+  </div>
+</details>
 
 ---
 

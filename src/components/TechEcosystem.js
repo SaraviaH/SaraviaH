@@ -1,282 +1,433 @@
 /* ==========================================================================
-   TechEcosystem Component — Interconnected Animated SVG Icon Network
+   TechEcosystem Component — 8 Independent Animated Orbital Planetary Systems
+   Visual DNA faithfully derived from the user's reference SVG.
    ========================================================================== */
 
 (function (global) {
   'use strict';
 
-  function buildNetworkSvg(ecosystem, variant) {
-    const isMobile = variant === 'mobile';
-    const width = isMobile ? 360 : 920;
-    const height = isMobile ? 558 : 394;
-    const nodeRadius = isMobile ? 25 : 28;
-    const icons = global.SaraviaProfile.icons;
+  function generateParticles(seedIndex, size) {
+    // Deterministic subtle particle field (28 crisp #1793D1 micro-stars per system)
+    const count = size > 560 ? 34 : 26;
+    const radii = [0.6, 1.0, 1.35];
+    const particles = [];
+    let s = (seedIndex + 1) * 7919;
 
-    const nodeMap = {};
-    ecosystem.nodes.forEach(function (node) {
-      nodeMap[node.id] = node;
-    });
+    for (let i = 0; i < count; i++) {
+      s = (s * 48271) % 2147483647;
+      const x = Math.round((s / 2147483647) * (size - 24) + 12);
+      s = (s * 48271) % 2147483647;
+      const y = Math.round((s / 2147483647) * (size - 24) + 12);
+      const r = radii[i % radii.length];
+      const delay = ((i % 7) * 0.6).toFixed(1);
+      particles.push(
+        '<circle cx="' + x + '" cy="' + y + '" r="' + r + '" ' +
+          'fill="#1793D1" class="orbit-star" style="animation-delay:' + delay + 's" />'
+      );
+    }
+    return particles.join('');
+  }
 
-    // Build SVG edges
-    const edgesMarkup = ecosystem.edges
-      .map(function (pair) {
-        const a = nodeMap[pair[0]][variant];
-        const b = nodeMap[pair[1]][variant];
+  function renderCoreVisual(core, cx, cy, icons) {
+    const coreRadius = 44;
+    let inner = '';
+
+    if (core.type === 'text') {
+      inner =
+        '<text x="' + cx + '" y="' + (cy + 8) + '" text-anchor="middle" ' +
+          'font-family="Consolas, Menlo, DejaVu Sans Mono, monospace" ' +
+          'font-size="24" font-weight="700" fill="#1793D1">' +
+          core.value.replace(/</g, '&lt;').replace(/>/g, '&gt;') +
+        '</text>';
+    } else if (core.type === 'logo') {
+      const half = core.size / 2;
+      inner =
+        '<image href="' + core.logo + '" ' +
+          'x="' + (cx - half) + '" y="' + (cy - half) + '" ' +
+          'width="' + core.size + '" height="' + core.size + '" ' +
+          'preserveAspectRatio="xMidYMid meet" />';
+    } else if (core.type === 'icon') {
+      const scale = (core.size / 24).toFixed(4);
+      const half = core.size / 2;
+      inner =
+        '<g transform="translate(' + (cx - half) + ' ' + (cy - half) + ') scale(' + scale + ')" ' +
+          'fill="none" stroke="#1793D1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">' +
+          icons.getContent(core.icon) +
+        '</g>';
+    }
+
+    return (
+      '<g class="orbit-core" aria-label="Núcleo: ' + core.label + '">' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="' + (coreRadius + 10) + '" fill="url(#coreGlow-' + cx + ')" />' +
+        '<circle cx="' + cx + '" cy="' + cy + '" r="' + coreRadius + '" fill="#0D1117" stroke="#1793D1" stroke-width="2" />' +
+        inner +
+      '</g>'
+    );
+  }
+
+  function renderOrbitSvg(system, systemIndex, icons) {
+    const size = system.viewBoxSize || 520;
+    const cx = size / 2;
+    const cy = size / 2;
+
+    // 1. Subtle twinkling space particles
+    const starsMarkup = generateParticles(systemIndex, size);
+
+    // 2. Concentric dashed circular orbits
+    const guidesMarkup = system.orbits
+      .map(function (orbit) {
         return (
-          '<line class="eco-edge" ' +
-          'data-from="' + pair[0] + '" data-to="' + pair[1] + '" ' +
-          'x1="' + a.x + '" y1="' + a.y + '" ' +
-          'x2="' + b.x + '" y2="' + b.y + '" />'
+          '<circle cx="' + cx + '" cy="' + cy + '" r="' + orbit.radius + '" ' +
+            'fill="none" stroke="#30363D" stroke-dasharray="4 6" />'
         );
       })
       .join('');
 
-    // Build motion paths & luminous traveling pulses
-    const pulsePathsDefs = [];
-    const pulseCircles = [];
+    // 3. Rotating orbital rings with counter-rotating upright technology nodes
+    const ringsMarkup = system.orbits
+      .map(function (orbit, orbitIdx) {
+        const count = orbit.items.length;
+        const oppositeDir = orbit.direction === 'normal' ? 'reverse' : 'normal';
+        // Slight angular offset per orbit so nodes don't stack vertically at t=0
+        const startDeg = orbitIdx === 0 ? -90 : orbitIdx === 1 ? -58 : -32;
 
-    ecosystem.pulses.forEach(function (pulse, index) {
-      const pathId = 'eco-route-' + variant + '-' + index;
-      const d = pulse.route
-        .map(function (nodeId, step) {
-          const pt = nodeMap[nodeId][variant];
-          return (step === 0 ? 'M ' : 'L ') + pt.x + ' ' + pt.y;
-        })
-        .join(' ');
-
-      pulsePathsDefs.push('<path id="' + pathId + '" d="' + d + '" />');
-      pulseCircles.push(
-        '<circle class="eco-pulse-dot" r="2.2" fill="' + pulse.color + '" filter="url(#ecoGlow-' + variant + ')">' +
-          '<animateMotion dur="' + pulse.dur + '" begin="' + pulse.begin + '" repeatCount="indefinite" calcMode="linear">' +
-            '<mpath href="#' + pathId + '" />' +
-          '</animateMotion>' +
-        '</circle>'
-      );
-    });
-
-    // Build icon nodes (pure icon-only, accessible title & role)
-    const nodesMarkup = ecosystem.nodes
-      .map(function (node, index) {
-        const pt = node[variant];
-        const delayMs = 40 + index * 32;
-        const classes = ['eco-node'];
-        if (node.isCore) classes.push('eco-node--core');
-        if (node.isLearning) classes.push('eco-node--learning');
-
-        const pulseRing = node.isCore
-          ? '<circle class="eco-node__pulse ' + (node.pulseDelay || '') + '" cx="0" cy="0" r="' + (nodeRadius + 2) + '" />'
-          : node.isLearning
-          ? '<circle class="eco-node__pulse eco-node__pulse--green eco-node__pulse--delay-2" cx="0" cy="0" r="' + (nodeRadius + 2) + '" />'
+        const spokesMarkup = system.showCoreLinks
+          ? orbit.items
+              .map(function (_, idx) {
+                const rad = ((startDeg + (360 / count) * idx) * Math.PI) / 180;
+                const x = (cx + orbit.radius * Math.cos(rad)).toFixed(1);
+                const y = (cy + orbit.radius * Math.sin(rad)).toFixed(1);
+                return (
+                  '<line x1="' + cx + '" y1="' + cy + '" x2="' + x + '" y2="' + y + '" ' +
+                    'stroke="#1793D1" stroke-opacity="0.16" stroke-width="1" stroke-dasharray="2 5" />'
+                );
+              })
+              .join('')
           : '';
 
-        const iconOffset = -12;
+        const nodesMarkup = orbit.items
+          .map(function (item, idx) {
+            const deg = startDeg + (360 / count) * idx;
+            const rad = (deg * Math.PI) / 180;
+            const x = (cx + orbit.radius * Math.cos(rad)).toFixed(1);
+            const y = (cy + orbit.radius * Math.sin(rad)).toFixed(1);
+            const halfLogo = (orbit.logoSize / 2).toFixed(1);
+
+            const circleClass = item.isExploring
+              ? 'orbit-node__circle orbit-node__circle--exploring'
+              : 'orbit-node__circle';
+
+            let visualMarkup;
+            if (item.missingAsset) {
+              visualMarkup =
+                '<circle r="' + (orbit.nodeRadius - 5) + '" fill="none" stroke="#30363D" stroke-dasharray="2 2.5" />' +
+                '<text y="4" text-anchor="middle" font-family="Consolas, Menlo, monospace" ' +
+                  'font-size="10.5" font-weight="600" fill="#8B949E">' + item.slotCode + '</text>';
+            } else {
+              visualMarkup =
+                '<image class="orbit-node__logo" href="' + item.logo + '" ' +
+                  'x="-' + halfLogo + '" y="-' + halfLogo + '" ' +
+                  'width="' + orbit.logoSize + '" height="' + orbit.logoSize + '" ' +
+                  'preserveAspectRatio="xMidYMid meet" />';
+            }
+
+            const labelText = item.isExploring ? item.name + ' *' : item.name;
+
+            return (
+              '<g transform="translate(' + x + ' ' + y + ')">' +
+                '<g class="orbit-up" style="animation:orbitSpin ' + orbit.duration + ' linear infinite ' + oppositeDir + '">' +
+                  // Exact symmetric invisible bounding box guarantees dead-center counter-rotation (zero wobble)
+                  '<rect x="-72" y="-72" width="144" height="144" fill="none" pointer-events="none" />' +
+                  '<g class="orbit-node" ' +
+                    'data-system-id="' + system.id + '" ' +
+                    'data-tech-id="' + item.id + '" ' +
+                    'tabindex="0" role="button" ' +
+                    'aria-label="' + (item.fullName || item.name) + ' — ' + item.tier + '">' +
+                    '<title>' + (item.fullName || item.name) + '</title>' +
+                    '<circle class="' + circleClass + '" r="' + orbit.nodeRadius + '" />' +
+                    visualMarkup +
+                    '<text class="orbit-node__label" y="' + orbit.labelOffset + '" text-anchor="middle" ' +
+                      'font-size="' + orbit.labelSize + '">' + labelText + '</text>' +
+                  '</g>' +
+                '</g>' +
+              '</g>'
+            );
+          })
+          .join('');
 
         return (
-          '<g class="' + classes.join(' ') + '" ' +
-            'data-node-id="' + node.id + '" ' +
-            'transform="translate(' + pt.x + ',' + pt.y + ')" ' +
-            'style="transition-delay:' + delayMs + 'ms" ' +
-            'tabindex="0" role="button" aria-label="' + node.title + ' — ' + node.stage + '">' +
-            '<title>' + node.title + '</title>' +
-            pulseRing +
-            '<g class="eco-node__inner">' +
-              '<circle class="eco-node__circle" cx="0" cy="0" r="' + nodeRadius + '" />' +
-              '<g class="eco-node__icon" transform="translate(' + iconOffset + ',' + iconOffset + ')">' +
-                icons.getContent(node.icon) +
-              '</g>' +
-            '</g>' +
+          '<g class="orbit-ring" style="transform-origin:' + cx + 'px ' + cy + 'px;animation:orbitSpin ' + orbit.duration + ' linear infinite ' + orbit.direction + '">' +
+            spokesMarkup +
+            nodesMarkup +
           '</g>'
         );
       })
       .join('');
 
+    const stageClass =
+      size > 560 ? 'orbit-svg orbit-svg--wide' : 'orbit-svg';
+
     return (
-      '<svg class="ecosystem-svg ecosystem-svg--' + variant + '" ' +
-        'viewBox="0 0 ' + width + ' ' + height + '" ' +
-        'width="' + width + '" height="' + height + '" ' +
-        'role="group" aria-label="Red interconectada de ámbitos tecnológicos">' +
+      '<svg class="' + stageClass + '" ' +
+        'data-orbit-system="' + system.id + '" ' +
+        'xmlns="http://www.w3.org/2000/svg" ' +
+        'viewBox="0 0 ' + size + ' ' + size + '" ' +
+        'width="' + size + '" height="' + size + '" ' +
+        'role="group" aria-label="Sistema orbital de ' + system.title + '">' +
         '<defs>' +
-          '<filter id="ecoGlow-' + variant + '" x="-100%" y="-100%" width="300%" height="300%">' +
-            '<feGaussianBlur stdDeviation="2.2" result="blur" />' +
-            '<feMerge>' +
-              '<feMergeNode in="blur" />' +
-              '<feMergeNode in="SourceGraphic" />' +
-            '</feMerge>' +
-          '</filter>' +
-          pulsePathsDefs.join('') +
+          '<radialGradient id="coreGlow-' + cx + '" cx="50%" cy="50%" r="50%">' +
+            '<stop offset="0%" stop-color="#1793D1" stop-opacity="0.28" />' +
+            '<stop offset="65%" stop-color="#1793D1" stop-opacity="0.06" />' +
+            '<stop offset="100%" stop-color="#1793D1" stop-opacity="0" />' +
+          '</radialGradient>' +
         '</defs>' +
-        '<g class="eco-edges">' + edgesMarkup + '</g>' +
-        '<g class="eco-pulses" aria-hidden="true">' + pulseCircles.join('') + '</g>' +
-        '<g class="eco-nodes">' + nodesMarkup + '</g>' +
+        '<g aria-hidden="true">' + starsMarkup + '</g>' +
+        '<g aria-hidden="true">' + guidesMarkup + '</g>' +
+        ringsMarkup +
+        renderCoreVisual(system.core, cx, cy, icons) +
       '</svg>'
     );
   }
 
-  function renderInspectorContent(node) {
-    const dotClass = node.isLearning
-      ? 'ecosystem__inspector-dot ecosystem__inspector-dot--learning'
-      : 'ecosystem__inspector-dot';
+  function renderTechDetail(item) {
+    const displayName = item.fullName || item.name;
+    const badgeClass = item.isExploring
+      ? 'orbit-detail__tier orbit-detail__tier--exploring'
+      : 'orbit-detail__tier';
 
-    const itemsHtml = node.points
-      .map(function (point) {
-        return '<li>' + point + '</li>';
+    const logoHtml = item.missingAsset
+      ? '<span class="orbit-detail__slot" aria-hidden="true">' + item.slotCode + '</span>'
+      : '<img class="orbit-detail__logo" src="' + item.logo + '" alt="" width="26" height="26" loading="lazy" />';
+
+    return (
+      '<div class="orbit-detail__lead">' +
+        '<span class="orbit-detail__icon-wrap">' + logoHtml + '</span>' +
+        '<div>' +
+          '<h4 class="orbit-detail__name">' + displayName + '</h4>' +
+          '<span class="' + badgeClass + '">' + item.tier + '</span>' +
+        '</div>' +
+      '</div>' +
+      '<p class="orbit-detail__desc">' + item.description + '</p>'
+    );
+  }
+
+  function renderSystemPanel(system, index, icons, isFirst) {
+    const defaultTech = system.orbits[0].items[0];
+    const hasExploring = system.orbits.some(function (o) {
+      return o.items.some(function (i) { return i.isExploring; });
+    });
+
+    const totalTechs = system.orbits.reduce(function (acc, o) {
+      return acc + o.items.length;
+    }, 0);
+
+    return (
+      '<article class="orbit-panel' + (isFirst ? ' is-selected' : '') + '" ' +
+        'data-panel-id="' + system.id + '" ' +
+        'id="orbit-panel-' + system.id + '">' +
+
+        '<header class="orbit-panel__head">' +
+          '<div>' +
+            '<span class="orbit-panel__index">0' + (index + 1) + ' / 08 · ' + totalTechs + ' tecnologías</span>' +
+            '<h3 class="orbit-panel__title">' + system.title + '</h3>' +
+            '<p class="orbit-panel__desc">' + system.description + '</p>' +
+          '</div>' +
+          '<button type="button" class="orbit-motion-btn" data-toggle-motion="' + system.id + '" aria-pressed="false">' +
+            'Pausar órbitas' +
+          '</button>' +
+        '</header>' +
+
+        '<div class="orbit-panel__stage">' +
+          renderOrbitSvg(system, index, icons) +
+        '</div>' +
+
+        '<div class="orbit-detail" data-detail-for="' + system.id + '" aria-live="polite">' +
+          renderTechDetail(defaultTech) +
+        '</div>' +
+
+        (hasExploring
+          ? '<p class="orbit-panel__footnote">* Tecnología en etapa de exploración y aprendizaje activo.</p>'
+          : '') +
+      '</article>'
+    );
+  }
+
+  function renderTechEcosystem(ecosystemData) {
+    const icons = global.SaraviaProfile.icons;
+
+    const tabsHtml = ecosystemData.systems
+      .map(function (sys, idx) {
+        return (
+          '<button type="button" ' +
+            'class="orbit-tab' + (idx === 0 ? ' is-active' : '') + '" ' +
+            'role="tab" ' +
+            'aria-selected="' + (idx === 0 ? 'true' : 'false') + '" ' +
+            'aria-controls="orbit-panel-' + sys.id + '" ' +
+            'data-tab-target="' + sys.id + '">' +
+            '<span class="orbit-tab__num">0' + (idx + 1) + '</span>' +
+            '<span>' + sys.shortTitle + '</span>' +
+          '</button>'
+        );
+      })
+      .join('');
+
+    const panelsHtml = ecosystemData.systems
+      .map(function (sys, idx) {
+        return renderSystemPanel(sys, idx, icons, idx === 0);
       })
       .join('');
 
     return (
-      '<div class="ecosystem__inspector-meta">' +
-        '<h3 class="ecosystem__inspector-title">' + node.title + '</h3>' +
-        '<span class="ecosystem__inspector-tag">' +
-          '<span class="' + dotClass + '" aria-hidden="true"></span>' +
-          node.stage +
-        '</span>' +
-      '</div>' +
-      '<ul class="ecosystem__inspector-list">' + itemsHtml + '</ul>'
-    );
-  }
-
-  const DEFAULT_OVERVIEW = {
-    title: 'Ecosistema conectado',
-    stage: '10 ámbitos · Red de desarrollo',
-    isLearning: false,
-    points: [
-      'Desarrollo web y aplicaciones móviles',
-      'Programación y arquitectura de software',
-      'Bases de datos e infraestructura',
-      'Diseño UX y fundamentos de ciberseguridad'
-    ]
-  };
-
-  function renderTechEcosystem(ecosystem) {
-    return (
       '<section class="section" id="ecosystem" aria-labelledby="ecosystem-heading">' +
         '<div class="container">' +
           '<div class="section__header reveal">' +
-            '<p class="section__eyebrow">' + ecosystem.eyebrow + '</p>' +
-            '<h2 class="section__title" id="ecosystem-heading">' + ecosystem.title + '</h2>' +
-            '<p class="section__lead">' + ecosystem.lead + '</p>' +
+            '<p class="section__eyebrow">' + ecosystemData.eyebrow + '</p>' +
+            '<h2 class="section__title" id="ecosystem-heading">' + ecosystemData.title + '</h2>' +
+            '<p class="section__lead">' + ecosystemData.lead + '</p>' +
           '</div>' +
 
-          '<div class="ecosystem__stage reveal">' +
-            '<div class="ecosystem__canvas">' +
-              buildNetworkSvg(ecosystem, 'desktop') +
-              buildNetworkSvg(ecosystem, 'mobile') +
+          '<div class="orbit-controls reveal">' +
+            '<div class="orbit-tabs" role="tablist" aria-label="Especialidades tecnológicas">' +
+              tabsHtml +
             '</div>' +
-            '<div class="ecosystem__inspector" id="ecosystem-inspector" aria-live="polite">' +
-              renderInspectorContent(DEFAULT_OVERVIEW) +
-            '</div>' +
+            '<button type="button" class="orbit-view-toggle" id="orbit-view-toggle" aria-pressed="false">' +
+              'Ver los 8 sistemas' +
+            '</button>' +
           '</div>' +
-          '<p class="ecosystem__hint reveal">' + ecosystem.hint + '</p>' +
+
+          '<div class="orbit-panels reveal" id="orbit-panels" data-view-mode="single">' +
+            panelsHtml +
+          '</div>' +
         '</div>' +
       '</section>'
     );
   }
 
-  function bindTechEcosystem(ecosystem) {
+  function bindTechEcosystem(ecosystemData) {
     const section = document.getElementById('ecosystem');
-    const inspector = document.getElementById('ecosystem-inspector');
-    if (!section || !inspector) return;
+    const panelsWrap = document.getElementById('orbit-panels');
+    const viewToggle = document.getElementById('orbit-view-toggle');
+    if (!section || !panelsWrap) return;
 
-    const nodeMap = {};
-    ecosystem.nodes.forEach(function (n) {
-      nodeMap[n.id] = n;
-    });
-
-    let pinnedId = null;
-
-    function resetNetwork() {
-      inspector.innerHTML = renderInspectorContent(DEFAULT_OVERVIEW);
-      section.querySelectorAll('.ecosystem-svg').forEach(function (svg) {
-        svg.querySelectorAll('.eco-node').forEach(function (el) {
-          el.classList.remove('is-active');
-          el.setAttribute('aria-pressed', 'false');
-        });
-        svg.querySelectorAll('.eco-edge').forEach(function (edge) {
-          edge.classList.remove('is-highlighted', 'is-dimmed');
+    // Index all technologies by system + tech id
+    const techLookup = {};
+    ecosystemData.systems.forEach(function (sys) {
+      techLookup[sys.id] = {};
+      sys.orbits.forEach(function (orbit) {
+        orbit.items.forEach(function (item) {
+          techLookup[sys.id][item.id] = item;
         });
       });
-    }
+    });
 
-    function setActive(nodeId) {
-      const node = nodeMap[nodeId];
-      if (!node) {
-        resetNetwork();
-        return;
+    function selectTech(systemId, techId) {
+      const item = techLookup[systemId] && techLookup[systemId][techId];
+      if (!item) return;
+
+      const panel = section.querySelector('[data-panel-id="' + systemId + '"]');
+      if (!panel) return;
+
+      const detail = panel.querySelector('[data-detail-for="' + systemId + '"]');
+      if (detail) {
+        detail.innerHTML = renderTechDetail(item);
       }
 
-      inspector.innerHTML = renderInspectorContent(node);
-
-      section.querySelectorAll('.ecosystem-svg').forEach(function (svg) {
-        svg.querySelectorAll('.eco-node').forEach(function (el) {
-          const isMatch = el.getAttribute('data-node-id') === nodeId;
-          el.classList.toggle('is-active', isMatch);
-          el.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
-        });
-
-        svg.querySelectorAll('.eco-edge').forEach(function (edge) {
-          const from = edge.getAttribute('data-from');
-          const to = edge.getAttribute('data-to');
-          const connected = from === nodeId || to === nodeId;
-          edge.classList.toggle('is-highlighted', connected);
-          edge.classList.toggle('is-dimmed', !connected);
-        });
+      panel.querySelectorAll('.orbit-node').forEach(function (node) {
+        const isCurrent = node.getAttribute('data-tech-id') === techId;
+        node.classList.toggle('is-selected', isCurrent);
+        node.setAttribute('aria-pressed', isCurrent ? 'true' : 'false');
       });
     }
 
-    // Bind hover, focus, and click/keyboard toggle across both responsive SVGs
-    section.querySelectorAll('.eco-node').forEach(function (el) {
-      const id = el.getAttribute('data-node-id');
-
-      el.addEventListener('mouseenter', function () {
-        setActive(id);
+    function activateTab(systemId) {
+      section.querySelectorAll('.orbit-tab').forEach(function (tab) {
+        const match = tab.getAttribute('data-tab-target') === systemId;
+        tab.classList.toggle('is-active', match);
+        tab.setAttribute('aria-selected', match ? 'true' : 'false');
       });
 
-      el.addEventListener('mouseleave', function () {
-        if (pinnedId) {
-          setActive(pinnedId);
-        } else {
-          resetNetwork();
+      section.querySelectorAll('.orbit-panel').forEach(function (panel) {
+        const match = panel.getAttribute('data-panel-id') === systemId;
+        panel.classList.toggle('is-selected', match);
+      });
+
+      // Notify motion observer so only visible SVGs animate
+      if (global.SaraviaProfile.observer && global.SaraviaProfile.observer.refreshOrbits) {
+        global.SaraviaProfile.observer.refreshOrbits();
+      }
+    }
+
+    // Tabs switching
+    section.querySelectorAll('.orbit-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        if (panelsWrap.getAttribute('data-view-mode') === 'all') {
+          panelsWrap.setAttribute('data-view-mode', 'single');
+          if (viewToggle) {
+            viewToggle.setAttribute('aria-pressed', 'false');
+            viewToggle.textContent = 'Ver los 8 sistemas';
+          }
+        }
+        activateTab(tab.getAttribute('data-tab-target'));
+      });
+    });
+
+    // Toggle between focused single-system mode and vertical all-8 mode
+    if (viewToggle) {
+      viewToggle.addEventListener('click', function () {
+        const isAll = panelsWrap.getAttribute('data-view-mode') === 'all';
+        const nextMode = isAll ? 'single' : 'all';
+        panelsWrap.setAttribute('data-view-mode', nextMode);
+        viewToggle.setAttribute('aria-pressed', nextMode === 'all' ? 'true' : 'false');
+        viewToggle.textContent = nextMode === 'all' ? 'Explorar uno a uno' : 'Ver los 8 sistemas';
+
+        if (global.SaraviaProfile.observer && global.SaraviaProfile.observer.refreshOrbits) {
+          global.SaraviaProfile.observer.refreshOrbits();
         }
       });
+    }
 
-      el.addEventListener('focus', function () {
-        setActive(id);
+    // Per-system pause/resume motion button
+    section.querySelectorAll('.orbit-motion-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const sysId = btn.getAttribute('data-toggle-motion');
+        const svg = section.querySelector('.orbit-svg[data-orbit-system="' + sysId + '"]');
+        if (!svg) return;
+        const nextPaused = svg.getAttribute('data-user-paused') !== 'true';
+        svg.setAttribute('data-user-paused', nextPaused ? 'true' : 'false');
+        svg.classList.toggle('is-paused', nextPaused);
+        btn.setAttribute('aria-pressed', nextPaused ? 'true' : 'false');
+        btn.textContent = nextPaused ? 'Reanudar órbitas' : 'Pausar órbitas';
+      });
+    });
+
+    // Interactive hover/focus/click on every orbiting technology logo
+    section.querySelectorAll('.orbit-node').forEach(function (node) {
+      const sysId = node.getAttribute('data-system-id');
+      const techId = node.getAttribute('data-tech-id');
+
+      node.addEventListener('click', function () {
+        selectTech(sysId, techId);
       });
 
-      el.addEventListener('blur', function () {
-        if (pinnedId) {
-          setActive(pinnedId);
-        } else {
-          resetNetwork();
-        }
+      node.addEventListener('focus', function () {
+        selectTech(sysId, techId);
       });
 
-      el.addEventListener('click', function () {
-        pinnedId = pinnedId === id ? null : id;
-        if (pinnedId) {
-          setActive(pinnedId);
-        } else {
-          resetNetwork();
-        }
-      });
-
-      el.addEventListener('keydown', function (event) {
+      node.addEventListener('keydown', function (event) {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
-          pinnedId = pinnedId === id ? null : id;
-          if (pinnedId) {
-            setActive(pinnedId);
-          } else {
-            resetNetwork();
-          }
-        } else if (event.key === 'Escape') {
-          pinnedId = null;
-          resetNetwork();
+          selectTech(sysId, techId);
         }
       });
     });
 
-    resetNetwork();
+    // Mark initial selected node for each system
+    ecosystemData.systems.forEach(function (sys) {
+      const firstItem = sys.orbits[0].items[0];
+      if (firstItem) {
+        selectTech(sys.id, firstItem.id);
+      }
+    });
   }
 
   global.SaraviaProfile = global.SaraviaProfile || {};

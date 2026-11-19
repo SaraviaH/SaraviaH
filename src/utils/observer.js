@@ -1,62 +1,52 @@
 /* ==========================================================================
-   Progressive Reveal & Lazy SVG Animation Controller
+   Progressive Reveal & Lazy Orbital Animation Controller
+   Only animates orbital SVGs that are both visible in the DOM and viewport.
    ========================================================================== */
 
 (function (global) {
   'use strict';
 
+  let orbitObserver = null;
+  let reducedMotion = false;
+
+  function isElementDisplayed(el) {
+    return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+  }
+
+  function isInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.top < window.innerHeight + 60 && rect.bottom > -60;
+  }
+
+  function syncOrbitPause(svg, inView) {
+    const userPaused = svg.getAttribute('data-user-paused') === 'true';
+    const shouldPause = reducedMotion || userPaused || !inView || !isElementDisplayed(svg);
+    svg.classList.toggle('is-paused', shouldPause);
+  }
+
+  function refreshOrbits() {
+    const orbitSvgs = document.querySelectorAll('.orbit-svg');
+    orbitSvgs.forEach(function (svg) {
+      syncOrbitPause(svg, isInViewport(svg));
+    });
+  }
+
   function initObservers() {
-    const prefersReducedMotion =
+    reducedMotion =
       typeof window.matchMedia === 'function' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const revealElements = document.querySelectorAll('.reveal');
-    const ecosystemSvgs = document.querySelectorAll('.ecosystem-svg');
+    const orbitSvgs = document.querySelectorAll('.orbit-svg');
 
-    // Respect prefers-reduced-motion immediately
-    if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+    if (reducedMotion || typeof IntersectionObserver === 'undefined') {
       revealElements.forEach(function (el) {
         el.classList.add('is-visible');
       });
-
-      ecosystemSvgs.forEach(function (svg) {
-        svg.classList.add('is-visible');
-        if (prefersReducedMotion) {
-          svg.classList.add('is-paused');
-          if (typeof svg.pauseAnimations === 'function') {
-            svg.pauseAnimations();
-          }
-          // Hide traveling dots statically when reduced motion is preferred
-          svg.querySelectorAll('.eco-pulses').forEach(function (g) {
-            g.setAttribute('display', 'none');
-          });
-        }
+      orbitSvgs.forEach(function (svg) {
+        syncOrbitPause(svg, !reducedMotion);
       });
       return;
-    }
-
-    function isInViewport(el) {
-      const rect = el.getBoundingClientRect();
-      return rect.top < window.innerHeight + 40 && rect.bottom > -40;
-    }
-
-    function activateEcosystem() {
-      ecosystemSvgs.forEach(function (svg) {
-        svg.classList.add('is-visible');
-        svg.classList.remove('is-paused');
-        if (typeof svg.unpauseAnimations === 'function') {
-          svg.unpauseAnimations();
-        }
-      });
-    }
-
-    function pauseEcosystem() {
-      ecosystemSvgs.forEach(function (svg) {
-        svg.classList.add('is-paused');
-        if (typeof svg.pauseAnimations === 'function') {
-          svg.pauseAnimations();
-        }
-      });
     }
 
     // Progressive editorial reveal
@@ -80,32 +70,25 @@
       }
     });
 
-    // Activate & pause SVG animations strictly while in viewport
-    const ecosystemSection = document.getElementById('ecosystem');
-    if (ecosystemSection) {
-      if (isInViewport(ecosystemSection)) {
-        activateEcosystem();
-      } else {
-        pauseEcosystem();
-      }
+    // Per-system orbital SVG observer — pauses offscreen & hidden tabs cleanly
+    orbitObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          syncOrbitPause(entry.target, entry.isIntersecting);
+        });
+      },
+      { rootMargin: '60px 0px 60px 0px', threshold: 0.01 }
+    );
 
-      const svgObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              activateEcosystem();
-            } else {
-              pauseEcosystem();
-            }
-          });
-        },
-        { rootMargin: '80px 0px 80px 0px', threshold: 0.01 }
-      );
-
-      svgObserver.observe(ecosystemSection);
-    }
+    orbitSvgs.forEach(function (svg) {
+      syncOrbitPause(svg, isInViewport(svg));
+      orbitObserver.observe(svg);
+    });
   }
 
   global.SaraviaProfile = global.SaraviaProfile || {};
-  global.SaraviaProfile.observer = { init: initObservers };
+  global.SaraviaProfile.observer = {
+    init: initObservers,
+    refreshOrbits: refreshOrbits
+  };
 })(window);

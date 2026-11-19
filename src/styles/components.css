@@ -110,265 +110,391 @@
   border-bottom-color: var(--accent-blue);
 }
 
-/* ---------- 2. Interconnected SVG Tech Ecosystem ---------- */
-.ecosystem__stage {
+/* ---------- 2. Orbital Technology Ecosystem (Reference SVG DNA) ---------- */
+.orbit-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+.orbit-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.orbit-tab {
+  appearance: none;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  padding: 0.4rem 0.62rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: 0.79rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    background-color var(--dur-fast) ease;
+}
+
+.orbit-tab__num {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--border-default);
+  transition: color var(--dur-fast) ease;
+}
+
+.orbit-tab:hover,
+.orbit-tab:focus-visible {
+  color: var(--text-primary);
   background-color: var(--bg-surface);
+}
+
+.orbit-tab.is-active {
+  color: var(--text-primary);
+  background-color: var(--bg-surface);
+  border-color: var(--orbit-blue);
+}
+
+.orbit-tab.is-active .orbit-tab__num {
+  color: var(--orbit-blue);
+}
+
+.orbit-view-toggle,
+.orbit-motion-btn {
+  appearance: none;
+  background: transparent;
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+  border-radius: var(--radius-sm);
+  padding: 0.42rem 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    background-color var(--dur-fast) ease;
 }
 
-.ecosystem__canvas {
-  position: relative;
-  padding: clamp(0.75rem, 2.2vw, 1.5rem);
+.orbit-view-toggle:hover,
+.orbit-view-toggle:focus-visible,
+.orbit-motion-btn:hover,
+.orbit-motion-btn:focus-visible {
+  color: var(--text-primary);
+  border-color: var(--orbit-blue);
+  background-color: var(--bg-surface);
 }
 
-.ecosystem-svg {
-  width: 100%;
-  height: auto;
-  display: block;
+.orbit-view-toggle[aria-pressed="true"],
+.orbit-motion-btn[aria-pressed="true"] {
+  color: var(--text-primary);
+  border-color: var(--orbit-blue);
 }
 
-.ecosystem-svg--mobile {
+/* Panels Container (Single Focused Mode vs All-8 Vertical Stack) */
+.orbit-panels {
+  display: grid;
+  gap: clamp(3rem, 6vw, 4.5rem);
+}
+
+.orbit-panels[data-view-mode="single"] .orbit-panel {
   display: none;
 }
 
+.orbit-panels[data-view-mode="single"] .orbit-panel.is-selected {
+  display: block;
+}
+
+.orbit-panels[data-view-mode="all"] .orbit-panel {
+  display: block;
+  padding-bottom: clamp(2.5rem, 5vw, 3.75rem);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.orbit-panels[data-view-mode="all"] .orbit-panel:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* Individual Orbital Planetary System (Minimal, Open, Zero Bulky Cards) */
+.orbit-panel__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.orbit-panel__index {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orbit-blue);
+  margin-bottom: 0.35rem;
+}
+
+.orbit-panel__title {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+}
+
+.orbit-panel__desc {
+  margin: 0.4rem 0 0;
+  max-width: 58ch;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.orbit-panel__stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--orbit-bg);
+  padding-block: clamp(0.5rem, 2vw, 1.25rem);
+}
+
+/* Orbital SVG Sizing & Responsive Scaling */
+.orbit-svg {
+  width: 100%;
+  height: auto;
+  max-width: 520px;
+  display: block;
+  overflow: visible;
+}
+
+.orbit-svg--wide {
+  max-width: 620px;
+}
+
+@media (max-width: 900px) {
+  .orbit-svg {
+    max-width: 460px;
+  }
+
+  .orbit-svg--wide {
+    max-width: 540px;
+  }
+}
+
 @media (max-width: 680px) {
-  .ecosystem-svg--desktop {
-    display: none;
+  .orbit-svg,
+  .orbit-svg--wide {
+    max-width: 100%;
+    overflow: hidden;
   }
 
-  .ecosystem-svg--mobile {
-    display: block;
-    max-width: 400px;
-    margin-inline: auto;
+  .orbit-tabs {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .orbit-tab {
+    padding: 0.38rem 0.6rem;
+    font-size: 0.78rem;
   }
 }
 
-/* SVG Edges */
-.eco-edge {
-  fill: none;
-  stroke: #3b434d;
-  stroke-width: 1.2;
-  opacity: 0.85;
-  transition: stroke var(--dur-base) ease, opacity var(--dur-base) ease, stroke-width var(--dur-base) ease;
+/* Orbital Animations — Exact Reference SVG Physics */
+@keyframes orbitSpin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-.eco-edge.is-highlighted {
-  stroke: var(--accent-blue);
-  stroke-width: 1.65;
-  opacity: 1;
+@keyframes orbitTwinkle {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.8;
+  }
 }
 
-.eco-edge.is-dimmed {
-  opacity: 0.24;
+.orbit-star {
+  animation: orbitTwinkle 4s ease-in-out infinite;
 }
 
-/* SVG Nodes */
-.eco-node {
-  cursor: pointer;
-  outline: none;
-  opacity: 0;
-  transition: opacity 320ms var(--ease-out);
-}
-
-.ecosystem-svg.is-visible .eco-node {
-  opacity: 1;
-}
-
-.eco-node__inner {
-  transition: transform var(--dur-fast) var(--ease-out);
-}
-
-.eco-node:hover .eco-node__inner,
-.eco-node:focus-visible .eco-node__inner,
-.eco-node.is-active .eco-node__inner {
-  transform: translateY(-2.5px);
-}
-
-.eco-node__circle {
-  fill: var(--bg-canvas);
-  stroke: #3d444d;
-  stroke-width: 1.25;
-  transition:
-    stroke var(--dur-fast) ease,
-    fill var(--dur-fast) ease,
-    stroke-width var(--dur-fast) ease;
-}
-
-.eco-node--core .eco-node__circle {
-  stroke: rgba(47, 129, 247, 0.72);
-  stroke-width: 1.35;
-}
-
-.eco-node--learning .eco-node__circle {
-  stroke: rgba(63, 185, 80, 0.7);
-  stroke-dasharray: 4 3;
-}
-
-.eco-node:hover .eco-node__circle,
-.eco-node:focus-visible .eco-node__circle,
-.eco-node.is-active .eco-node__circle {
-  fill: var(--bg-surface-hover);
-  stroke: var(--accent-blue);
-  stroke-width: 1.6;
-}
-
-.eco-node--learning:hover .eco-node__circle,
-.eco-node--learning:focus-visible .eco-node__circle,
-.eco-node--learning.is-active .eco-node__circle {
-  stroke: var(--accent-green-bright);
-}
-
-.eco-node__icon {
-  fill: none;
-  stroke: var(--text-secondary);
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: stroke var(--dur-fast) ease;
-}
-
-.eco-node--core .eco-node__icon {
-  stroke: var(--text-primary);
-}
-
-.eco-node:hover .eco-node__icon,
-.eco-node:focus-visible .eco-node__icon,
-.eco-node.is-active .eco-node__icon {
-  stroke: var(--text-primary);
-}
-
-/* Subtle Node Pulse (only active when visible) */
-.eco-node__pulse {
-  fill: none;
-  stroke: var(--accent-blue);
-  stroke-width: 1;
-  opacity: 0;
+.orbit-up {
   transform-box: fill-box;
   transform-origin: center;
 }
 
-.ecosystem-svg.is-visible .eco-node__pulse {
-  animation: nodeBreath 4.8s ease-in-out infinite;
+/* Pause ring + upright nodes in lockstep on hover so reading labels is effortless */
+.orbit-svg:not(.is-paused) .orbit-ring:hover,
+.orbit-svg:not(.is-paused) .orbit-ring:hover .orbit-up,
+.orbit-svg.is-paused .orbit-ring,
+.orbit-svg.is-paused .orbit-up,
+.orbit-svg.is-paused .orbit-star {
+  animation-play-state: paused !important;
 }
 
-.eco-node__pulse--green {
+/* Orbit Nodes (Reference SVG: #161B22 circles, #30363D border, #8B949E monospace labels) */
+.orbit-node {
+  cursor: pointer;
+  outline: none;
+}
+
+.orbit-node__circle {
+  fill: var(--orbit-node);
+  stroke: var(--orbit-border);
+  stroke-width: 1.1;
+  transition: stroke var(--dur-fast) ease, fill var(--dur-fast) ease, stroke-width var(--dur-fast) ease;
+}
+
+.orbit-node__circle--exploring {
+  stroke: var(--accent-green);
+  stroke-dasharray: 4 3;
+}
+
+.orbit-node__logo {
+  transition: transform var(--dur-fast) var(--ease-out);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.orbit-node__label {
+  font-family: Consolas, Menlo, "DejaVu Sans Mono", var(--font-mono);
+  fill: var(--orbit-text);
+  transition: fill var(--dur-fast) ease;
+  user-select: none;
+}
+
+.orbit-node:hover .orbit-node__circle,
+.orbit-node:focus-visible .orbit-node__circle,
+.orbit-node.is-selected .orbit-node__circle {
+  stroke: var(--orbit-blue);
+  stroke-width: 1.7;
+  fill: #1c222b;
+}
+
+.orbit-node:hover .orbit-node__circle--exploring,
+.orbit-node:focus-visible .orbit-node__circle--exploring,
+.orbit-node.is-selected .orbit-node__circle--exploring {
   stroke: var(--accent-green-bright);
 }
 
-.eco-node__pulse--delay-1 {
-  animation-delay: -1.6s !important;
+.orbit-node:hover .orbit-node__logo,
+.orbit-node:focus-visible .orbit-node__logo {
+  transform: scale(1.08);
 }
 
-.eco-node__pulse--delay-2 {
-  animation-delay: -3.2s !important;
+.orbit-node:hover .orbit-node__label,
+.orbit-node:focus-visible .orbit-node__label,
+.orbit-node.is-selected .orbit-node__label {
+  fill: var(--text-primary);
 }
 
-.ecosystem-svg.is-paused .eco-node__pulse {
-  animation-play-state: paused;
-}
-
-@keyframes nodeBreath {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0;
-  }
-  40% {
-    opacity: 0.35;
-  }
-  75% {
-    transform: scale(1.24);
-    opacity: 0;
-  }
-}
-
-/* Discreet Inspector Strip beneath the SVG Network */
-.ecosystem__inspector {
-  border-top: 1px solid var(--border-default);
-  background-color: var(--bg-canvas);
-  padding: 1.15rem clamp(1.1rem, 2.5vw, 1.75rem);
+/* Discreet Selected Technology Detail Strip */
+.orbit-detail {
+  margin-top: 0.75rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
   display: grid;
-  grid-template-columns: minmax(180px, 230px) 1fr;
+  grid-template-columns: minmax(190px, 240px) 1fr;
   gap: 0.75rem 1.75rem;
-  align-items: start;
-  min-height: 92px;
+  align-items: center;
 }
 
 @media (max-width: 680px) {
-  .ecosystem__inspector {
+  .orbit-detail {
     grid-template-columns: 1fr;
-    gap: 0.65rem;
+    gap: 0.6rem;
   }
 }
 
-.ecosystem__inspector-meta {
+.orbit-detail__lead {
   display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  align-items: center;
+  gap: 0.85rem;
 }
 
-.ecosystem__inspector-title {
+.orbit-detail__icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--orbit-node);
+  border: 1px solid var(--orbit-border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.orbit-detail__logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.orbit-detail__slot {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.orbit-detail__name {
   margin: 0;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.ecosystem__inspector-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  width: fit-content;
+.orbit-detail__tier {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--orbit-blue);
+}
+
+.orbit-detail__tier--exploring {
+  color: var(--accent-green-bright);
+}
+
+.orbit-detail__desc {
+  margin: 0;
+  font-size: 0.885rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.orbit-panel__footnote {
+  margin: 0.6rem 0 0;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--text-secondary);
-}
-
-.ecosystem__inspector-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--accent-blue);
-}
-
-.ecosystem__inspector-dot--learning {
-  background-color: var(--accent-green-bright);
-}
-
-.ecosystem__inspector-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.25rem;
-}
-
-.ecosystem__inspector-list li {
-  position: relative;
-  padding-left: 0.85rem;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-}
-
-.ecosystem__inspector-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.65em;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: var(--border-default);
-}
-
-.ecosystem__hint {
-  margin: 0.75rem 0 0;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-secondary);
   text-align: right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-ring,
+  .orbit-up,
+  .orbit-star {
+    animation: none !important;
+  }
 }
 
 /* ---------- 3. Editorial "A little about me" ---------- */

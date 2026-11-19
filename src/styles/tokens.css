@@ -21,6 +21,14 @@
   --accent-green-soft: rgba(35, 134, 54, 0.18);
   --accent-green-bright: #3FB950;
 
+  /* Orbital Ecosystem Exact Palette (Reference SVG) */
+  --orbit-bg: #010409;
+  --orbit-core: #0D1117;
+  --orbit-node: #161B22;
+  --orbit-border: #30363D;
+  --orbit-blue: #1793D1;
+  --orbit-text: #8B949E;
+
   /* Typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
