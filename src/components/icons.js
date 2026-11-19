@@ -75,7 +75,21 @@
     // Email minimal icon
     mail:
       '<rect x="3" y="5" width="18" height="14" rx="2" />' +
-      '<polyline points="3.5 6.5 12 13 20.5 6.5" />'
+      '<polyline points="3.5 6.5 12 13 20.5 6.5" />',
+
+    // Investigación y exploración: brújula minimalista
+    research:
+      '<circle cx="12" cy="12" r="9" />' +
+      '<polygon points="15.8 8.2 13.8 13.8 8.2 15.8 10.2 10.2 15.8 8.2" />',
+
+    // Personalizar: deslizadores de ajuste
+    sliders:
+      '<line x1="4" y1="7" x2="20" y2="7" />' +
+      '<line x1="4" y1="12" x2="20" y2="12" />' +
+      '<line x1="4" y1="17" x2="20" y2="17" />' +
+      '<circle cx="9" cy="7" r="2" fill="var(--bg-surface)" />' +
+      '<circle cx="15" cy="12" r="2" fill="var(--bg-surface)" />' +
+      '<circle cx="10" cy="17" r="2" fill="var(--bg-surface)" />'
   };
 
   function renderStandaloneIcon(name, className) {

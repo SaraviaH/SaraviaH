@@ -78,6 +78,10 @@ a:focus-visible {
   max-width: var(--editorial-max);
 }
 
+.container--wide {
+  max-width: var(--container-wide);
+}
+
 /* Section Rhythm */
 .section {
   padding-block: var(--space-section);

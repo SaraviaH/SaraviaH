@@ -9,7 +9,37 @@
     eyebrow: 'Sistemas orbitales',
     title: 'Technology Ecosystem',
     lead:
-      'Cada especialidad funciona como un sistema orbital independiente. Explora cada categoría y selecciona cualquier tecnología para ver su rol dentro de mi flujo de desarrollo.',
+      'Cada especialidad funciona como un sistema orbital independiente, organizado por lotes (Izquierda / Derecha) o de forma individual. Selecciona cualquier tecnología para ver su rol.',
+    batches: [
+      {
+        id: 'lote-1',
+        label: 'Lote 01',
+        title: 'Core & Backend',
+        left: 'languages',
+        right: 'backend'
+      },
+      {
+        id: 'lote-2',
+        label: 'Lote 02',
+        title: 'Frontend & Mobile',
+        left: 'frontend',
+        right: 'mobile'
+      },
+      {
+        id: 'lote-3',
+        label: 'Lote 03',
+        title: 'Databases & Cloud',
+        left: 'databases',
+        right: 'cloud'
+      },
+      {
+        id: 'lote-4',
+        label: 'Lote 04',
+        title: 'DevOps & Design',
+        left: 'devops',
+        right: 'design'
+      }
+    ],
     systems: [
       {
         id: 'languages',
@@ -215,7 +245,7 @@
         shortTitle: 'Frontend',
         title: 'Frontend Development',
         description:
-          'Jerarquía clara entre frameworks principales (Angular y React), herramientas de estilo/build y librerías visuales.',
+          'Jerarquía clara entre frameworks principales (Angular, React y Next.js), herramientas de estilo/build y librerías visuales.',
         viewBoxSize: 620,
         core: {
           type: 'icon',
@@ -248,6 +278,14 @@
                 tier: 'Framework principal',
                 description:
                   'Construcción de interfaces declarativas y modulares basadas en componentes reutilizables.'
+              },
+              {
+                id: 'nextjs',
+                name: 'Next.js',
+                logo: './assets/logos/nextjs.svg',
+                tier: 'Framework React full-stack',
+                description:
+                  'Desarrollo de aplicaciones web modernas sobre React con enrutamiento, renderizado híbrido y optimización.'
               }
             ]
           },
@@ -730,6 +768,14 @@
                 tier: 'Infraestructura cloud',
                 description:
                   'Despliegue ágil de backends y bases de datos en entornos gestionados.'
+              },
+              {
+                id: 'vercel',
+                name: 'Vercel',
+                logo: './assets/logos/vercel.svg',
+                tier: 'Despliegue web y Next.js',
+                description:
+                  'Publicación continua y optimizada para aplicaciones web con React, Next.js y proyectos frontend.'
               }
             ]
           },

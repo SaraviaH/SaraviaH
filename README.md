@@ -5,145 +5,173 @@
 
   <p>
     <strong>Systems and Telecommunications Engineering Student</strong><br />
-    Software Developer | Web &amp; Mobile Development
+    Software Developer | Web, Mobile &amp; Tech Research
+  </p>
+
+  <p>
+    🌐 <a href="https://saraviah.github.io/SaraviaH/"><strong>Explorar perfil web interactivo y personalizable</strong></a>
+    <sub>(alojado en este mismo repositorio vía GitHub Pages)</sub>
   </p>
 </div>
 
 <br />
 
-Soy estudiante de Ingeniería de Sistemas y Telecomunicaciones, interesado en el desarrollo de software y la creación de soluciones digitales.
-
-Me gusta desarrollar páginas web, aplicaciones móviles y sistemas que combinen funcionalidad, diseño y buenas prácticas de programación.
-
-Disfruto explorar nuevas tecnologías, experimentar con interfaces, desarrollar experiencias interactivas y aprender sobre arquitectura de software y seguridad informática.
-
-Mi objetivo es transformar ideas en soluciones digitales funcionales, intuitivas y bien estructuradas.
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <h3>👨‍💻 Sobre mí</h3>
+      <p>
+        👋 ¡Hola! Soy estudiante de <strong>Ingeniería de Sistemas y Telecomunicaciones</strong>, apasionado por el desarrollo de software y la creación de soluciones digitales.
+      </p>
+      <p>
+        📱💻 He creado <strong>aplicaciones móviles con React Native</strong> y <strong>aplicaciones web con React, Next.js y Angular</strong>, además de servicios backend con <strong>Java, Spring Boot y Python</strong>, combinando funcionalidad, diseño y buenas prácticas.
+      </p>
+      <p>
+        🚀 Mi objetivo es transformar ideas en soluciones digitales funcionales, intuitivas y bien estructuradas.
+      </p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>🔬 Investigación y Enfoque</h3>
+      <p>
+        Disfruto investigar nuevas tecnologías, experimentar con interfaces interactivas y entender cómo se organizan los sistemas desde su arquitectura hasta su despliegue.
+      </p>
+      <ul>
+        <li>🔎 <strong>Investigación tecnológica:</strong> exploración continua de herramientas modernas y flujos de desarrollo.</li>
+        <li>🧩 <strong>Arquitectura de software:</strong> organización modular, modelado UML y documentación técnica.</li>
+        <li>☁️ <strong>Servicios y nube:</strong> APIs, bases de datos relacionales, contenedores y despliegue continuo.</li>
+        <li>🛡️ <strong>Seguridad informática:</strong> fundamentos de redes y buenas prácticas de protección en aplicaciones.</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## Technology Ecosystem
+## 🪐 Technology Ecosystem
 
-Cada especialidad opera como un sistema orbital independiente. Expande cada categoría para explorar las tecnologías y herramientas que utilizo.
+Cada especialidad funciona como un **sistema orbital independiente**, organizado en **lotes (Izquierda | Derecha)** para explorar mis conocimientos sin sobrecargar la vista.
 
 <details open>
-  <summary><strong>01 · Programming Languages</strong> — Lenguajes principales para desarrollo web, backend, móvil y datos</summary>
+  <summary><strong>📦 Lote 01 · Core &amp; Backend</strong> — <code>💻 Programming Languages</code> | <code>⚙️ Backend Development</code></summary>
   <br />
-  <div align="center">
-    <img src="./assets/orbits/01-programming-languages.svg" alt="Sistema orbital — Programming Languages" width="520" />
-  </div>
+  <table width="100%">
+    <tr>
+      <th width="50%">💻 Programming Languages</th>
+      <th width="50%">⚙️ Backend Development</th>
+    </tr>
+    <tr>
+      <td width="50%" align="center" valign="top">
+        <img src="./assets/orbits/01-programming-languages.svg" alt="Sistema orbital — Programming Languages" width="100%" />
+      </td>
+      <td width="50%" align="center" valign="top">
+        <img src="./assets/orbits/02-backend-development.svg" alt="Sistema orbital — Backend Development" width="100%" />
+      </td>
+    </tr>
+  </table>
+</details>
+
+<details open>
+  <summary><strong>📦 Lote 02 · Frontend &amp; Mobile</strong> — <code>🎨 Frontend Development</code> | <code>📱 Mobile Development</code></summary>
+  <br />
+  <table width="100%">
+    <tr>
+      <th width="50%">🎨 Frontend Development</th>
+      <th width="50%">📱 Mobile Development</th>
+    </tr>
+    <tr>
+      <td width="50%" align="center" valign="top">
+        <img src="./assets/orbits/03-frontend-development.svg" alt="Sistema orbital — Frontend Development" width="100%" />
+      </td>
+      <td width="50%" align="center" valign="top">
+        <img src="./assets/orbits/05-mobile-development.svg" alt="Sistema orbital — Mobile Development" width="100%" />
+        <p><sub>* Flutter en etapa de exploración y aprendizaje activo.</sub></p>
+      </td>
+    </tr>
+  </table>
 </details>
 
 <details>
-  <summary><strong>02 · Backend Development</strong> — Servicios de servidor, APIs REST y contenedores (Java y Spring Boot)</summary>
+  <summary><strong>📦 Lote 03 · Databases &amp; Cloud</strong> — <code>🗄️ Databases</code> | <code>☁️ Cloud &amp; Deployment</code></summary>
   <br />
-  <div align="center">
-    <img src="./assets/orbits/02-backend-development.svg" alt="Sistema orbital — Backend Development" width="520" />
-  </div>
+  <table width="100%">
+    <tr>
+      <th width="50%">🗄️ Databases</th>
+      <th width="50%">☁️ Cloud &amp; Deployment</th>
+    </tr>
+    <tr>
+      <td width="50%" align="center" valign="top">
+        <img src="./assets/orbits/04-databases.svg" alt="Sistema orbital — Databases" width="100%" />
+      </td>
+      <td width="50%" align="center" valign="top">
+        <img src="./assets/orbits/07-cloud-deployment.svg" alt="Sistema orbital — Cloud and Deployment" width="100%" />
+      </td>
+    </tr>
+  </table>
 </details>
 
 <details>
-  <summary><strong>03 · Frontend Development</strong> — Frameworks principales (Angular y React), estilos y librerías visuales</summary>
+  <summary><strong>📦 Lote 04 · DevOps &amp; Design</strong> — <code>🛠️ DevOps &amp; Development Tools</code> | <code>📐 Software Design</code></summary>
   <br />
-  <div align="center">
-    <img src="./assets/orbits/03-frontend-development.svg" alt="Sistema orbital — Frontend Development" width="600" />
-  </div>
-</details>
-
-<details>
-  <summary><strong>04 · Databases</strong> — Motores relacionales y almacenamiento conectado al ecosistema backend y móvil</summary>
-  <br />
-  <div align="center">
-    <img src="./assets/orbits/04-databases.svg" alt="Sistema orbital — Databases" width="520" />
-  </div>
-</details>
-
-<details>
-  <summary><strong>05 · Mobile Development</strong> — Aplicaciones móviles multiplataforma, persistencia local y nube</summary>
-  <br />
-  <div align="center">
-    <img src="./assets/orbits/05-mobile-development.svg" alt="Sistema orbital — Mobile Development" width="520" />
-  </div>
-  <p align="center"><sub>* Flutter en etapa de exploración y aprendizaje activo.</sub></p>
-</details>
-
-<details>
-  <summary><strong>06 · DevOps &amp; Development Tools</strong> — Control de versiones, contenedores, builds e IDEs</summary>
-  <br />
-  <div align="center">
-    <img src="./assets/orbits/06-devops-tools.svg" alt="Sistema orbital — DevOps and Development Tools" width="520" />
-  </div>
-</details>
-
-<details>
-  <summary><strong>07 · Cloud &amp; Deployment</strong> — Plataformas de despliegue continuo, BaaS y gestión multimedia</summary>
-  <br />
-  <div align="center">
-    <img src="./assets/orbits/07-cloud-deployment.svg" alt="Sistema orbital — Cloud and Deployment" width="520" />
-  </div>
-</details>
-
-<details>
-  <summary><strong>08 · Software Design</strong> — Prototipado de interfaces, modelado UML y diseño estructural</summary>
-  <br />
-  <div align="center">
-    <img src="./assets/orbits/08-software-design.svg" alt="Sistema orbital — Software Design" width="520" />
-  </div>
+  <table width="100%">
+    <tr>
+      <th width="50%">🛠️ DevOps &amp; Development Tools</th>
+      <th width="50%">📐 Software Design</th>
+    </tr>
+    <tr>
+      <td width="50%" align="center" valign="top">
+        <img src="./assets/orbits/06-devops-tools.svg" alt="Sistema orbital — DevOps and Development Tools" width="100%" />
+      </td>
+      <td width="50%" align="center" valign="top">
+        <img src="./assets/orbits/08-software-design.svg" alt="Sistema orbital — Software Design" width="100%" />
+      </td>
+    </tr>
+  </table>
 </details>
 
 ---
 
-## A little about me
+## 🌱 Conocimientos y aprendizaje
 
-Me motiva convertir ideas en soluciones digitales claras, funcionales y bien pensadas. Disfruto tanto diseñar interfaces intuitivas como estructurar la lógica interna que sostiene aplicaciones web y móviles.
-
-- Crear soluciones digitales útiles y bien estructuradas.
-- Desarrollar aplicaciones web y móviles adaptables.
-- Diseñar interfaces claras e intuitivas.
-- Aprender nuevas tecnologías de forma constante.
-- Explorar la arquitectura y organización del software.
-- Experimentar con proyectos creativos e interactivos.
-
----
-
-## Áreas de interés
-
-| **Web Development** | **Mobile Development** |
-| :--- | :--- |
-| Creación de sitios web, plataformas y sistemas digitales. | Desarrollo de aplicaciones móviles y experiencias multiplataforma. |
-
-| **Software Engineering** | **Cybersecurity** |
-| :--- | :--- |
-| Programación, arquitectura, bases de datos y diseño de soluciones. | Fundamentos de seguridad informática y protección de aplicaciones. |
-
----
-
-## Conocimientos y aprendizaje
-
-**Áreas que ya he trabajado**
-- Desarrollo web orientado a interfaces y lógica de servidor.
-- Lógica de programación y programación orientada a objetos.
-- Bases de datos relacionales, modelado y consultas SQL.
-- Diseño de interfaces y diseño responsive.
-- Control de versiones y organización del código.
-
-**Áreas que continúo desarrollando**
-- Desarrollo de aplicaciones móviles y multiplataforma.
-- Diseño de APIs, servicios web y persistencia de datos.
-- Arquitectura de software, modelado UML y documentación técnica.
-- Contenedores, entornos de desarrollo y despliegue en la nube.
-- Sistemas de diseño, prototipado y experiencia de usuario.
-
-**Áreas que estoy explorando**
-- Fundamentos de ciberseguridad y seguridad básica de aplicaciones.
-- Conceptos de redes y protección de la información.
-- Arquitectura de sistemas y diseño de soluciones.
+<table width="100%">
+  <tr>
+    <td width="33%" valign="top">
+      <strong>✅ Áreas que ya he trabajado</strong>
+      <ul>
+        <li>Apps web con React, Next.js, Angular y backend.</li>
+        <li>Apps móviles multiplataforma con React Native.</li>
+        <li>Lógica de programación y POO.</li>
+        <li>Bases de datos relacionales y SQL.</li>
+        <li>Diseño responsive y control de versiones.</li>
+      </ul>
+    </td>
+    <td width="33%" valign="top">
+      <strong>🔧 Áreas que continúo desarrollando</strong>
+      <ul>
+        <li>Diseño de APIs REST y persistencia de datos.</li>
+        <li>Arquitectura de software y modelado UML.</li>
+        <li>Contenedores y despliegue en la nube.</li>
+        <li>Sistemas de diseño y experiencia de usuario.</li>
+      </ul>
+    </td>
+    <td width="33%" valign="top">
+      <strong>🔬 Áreas que estoy explorando</strong>
+      <ul>
+        <li>Investigación tecnológica aplicada.</li>
+        <li>Fundamentos de ciberseguridad en apps.</li>
+        <li>Redes y protección de la información.</li>
+        <li>Nuevas propuestas multiplataforma (Flutter).</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 ---
 
 <div align="center">
   <p><strong>SARAVIAH</strong> — <em>Building ideas into digital experiences.</em></p>
   <p>
-    <a href="https://github.com/SaraviaH">GitHub</a> ·
-    <a href="mailto:josesaraviahuaman@gmail.com">Email</a>
+    🐙 <a href="https://github.com/SaraviaH">GitHub</a> ·
+    📫 <a href="mailto:josesaraviahuaman@gmail.com">Email</a> ·
+    🌐 <a href="https://saraviah.github.io/SaraviaH/">Perfil Web Interactivo</a>
   </p>
 </div>

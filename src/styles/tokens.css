@@ -35,6 +35,7 @@
 
   /* Layout & Spacing */
   --container-max: 960px;
+  --container-wide: 1180px;
   --editorial-max: 720px;
   --hero-img-max: 1774px;
   --space-section: clamp(4.5rem, 9vw, 7.5rem);
@@ -45,6 +46,7 @@
   --radius-md: 10px;
   --radius-pill: 999px;
 
+  --orbit-speed-factor: 1;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --dur-fast: 180ms;
   --dur-base: 320ms;
