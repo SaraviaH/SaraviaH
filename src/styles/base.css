@@ -1,0 +1,160 @@
+/* ==========================================================================
+   Base Styles — Typography, Reset, Layout & Accessibility
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: clip;
+}
+
+img,
+svg {
+  display: block;
+}
+
+a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--dur-fast) ease;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--accent-blue);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.5rem 0.9rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--accent-blue);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Layout Containers */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-gutter);
+}
+
+.container--editorial {
+  max-width: var(--editorial-max);
+}
+
+/* Section Rhythm */
+.section {
+  padding-block: var(--space-section);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.section__header {
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.section__eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent-blue);
+}
+
+.section__title {
+  margin: 0;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.section__lead {
+  margin: 0.75rem 0 0;
+  max-width: 60ch;
+  font-size: 0.975rem;
+  color: var(--text-secondary);
+}
+
+/* Progressive Reveal (Activated by IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 420ms var(--ease-out),
+    transform 420ms var(--ease-out);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduced Motion Guarantee */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
