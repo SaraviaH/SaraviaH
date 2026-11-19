@@ -8,10 +8,6 @@
     Software Developer | Web, Mobile &amp; Tech Research
   </p>
 
-  <p>
-    🌐 <a href="https://saraviah.github.io/SaraviaH/"><strong>Explorar perfil web interactivo y personalizable</strong></a>
-    <sub>(alojado en este mismo repositorio vía GitHub Pages)</sub>
-  </p>
 </div>
 
 <br />
