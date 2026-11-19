@@ -1,0 +1,524 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" width="960" height="460" role="img" aria-label="Arquitectura y Ecosistema: Frontend, Backend, Servidores, Bases de Datos y Git Branching">
+  <defs>
+    <linearGradient id="archBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="50%" stop-color="#0e1628"/>
+      <stop offset="100%" stop-color="#111026"/>
+    </linearGradient>
+
+    <linearGradient id="rgbBorder" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee">
+        <animate attributeName="stop-color" values="#22d3ee;#a855f7;#10b981;#ec4899;#22d3ee" dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" stop-color="#a855f7">
+        <animate attributeName="stop-color" values="#a855f7;#10b981;#ec4899;#22d3ee;#a855f7" dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#ec4899">
+        <animate attributeName="stop-color" values="#ec4899;#22d3ee;#a855f7;#10b981;#ec4899" dur="8s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+
+    <linearGradient id="frontCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f1d33"/>
+      <stop offset="100%" stop-color="#0b1222"/>
+    </linearGradient>
+
+    <linearGradient id="backCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#191333"/>
+      <stop offset="100%" stop-color="#0c1022"/>
+    </linearGradient>
+
+    <linearGradient id="srvCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c2326"/>
+      <stop offset="100%" stop-color="#0b1222"/>
+    </linearGradient>
+
+    <linearGradient id="gitCard" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#17112b"/>
+      <stop offset="50%" stop-color="#11182c"/>
+      <stop offset="100%" stop-color="#1a1228"/>
+    </linearGradient>
+
+    <pattern id="dotGrid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="0.85" fill="#334155" fill-opacity="0.45"/>
+    </pattern>
+
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <clipPath id="outerClip">
+      <rect x="4" y="4" width="952" height="452" rx="18"/>
+    </clipPath>
+
+    <!-- Motion Paths for Animated Packets -->
+    <path id="flowFrontToBack" d="M 300 156 L 342 156"/>
+    <path id="flowBackToFront" d="M 342 188 L 300 188"/>
+    <path id="flowBackToSrv"   d="M 618 156 L 660 156"/>
+    <path id="flowSrvToBack"   d="M 660 188 L 618 188"/>
+
+    <!-- Vertical Deploy Sparks -->
+    <path id="deployFront" d="M 162 314 L 162 286"/>
+    <path id="deployBack"  d="M 480 314 L 480 286"/>
+    <path id="deploySrv"   d="M 798 314 L 798 286"/>
+
+    <!-- Git Branch Animation Paths -->
+    <path id="gitFrontPath" d="M 88 388 L 118 388 C 138 388, 144 365, 168 365 L 262 365 C 286 365, 294 388, 316 388 L 444 388"/>
+    <path id="gitBackPath"  d="M 88 388 L 166 388 C 188 388, 194 412, 220 412 L 366 412 C 392 412, 400 388, 424 388 L 444 388"/>
+  </defs>
+
+  <style>
+    .sans { font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; }
+    .mono { font-family: 'Cascadia Code', 'JetBrains Mono', Consolas, 'Courier New', monospace; }
+
+    @keyframes ledBlinkA {
+      0%, 100% { opacity: 1; }
+      45% { opacity: 0.25; }
+      55% { opacity: 1; }
+    }
+    @keyframes ledBlinkB {
+      0%, 30%, 100% { opacity: 0.3; }
+      50%, 75% { opacity: 1; }
+    }
+    @keyframes scanBar {
+      0%, 100% { transform: translateY(0px); opacity: 0.55; }
+      50% { transform: translateY(34px); opacity: 0.95; }
+    }
+    @keyframes pulseRing {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.12); opacity: 1; }
+    }
+    @keyframes barGrow {
+      0%, 100% { transform: scaleX(0.45); }
+      50% { transform: scaleX(1); }
+    }
+    @keyframes dashFlow {
+      to { stroke-dashoffset: -28; }
+    }
+    @keyframes dashRev {
+      to { stroke-dashoffset: 28; }
+    }
+
+    .led-a { animation: ledBlinkA 1.6s ease-in-out infinite; }
+    .led-b { animation: ledBlinkB 2.1s ease-in-out infinite; }
+    .led-c { animation: ledBlinkA 1.3s ease-in-out 0.5s infinite; }
+    .scan  { animation: scanBar 3.2s ease-in-out infinite; }
+    .pulse { transform-box: fill-box; transform-origin: center; animation: pulseRing 2.6s ease-in-out infinite; }
+    .grow-a { transform-box: fill-box; transform-origin: left center; animation: barGrow 2.8s ease-in-out infinite; }
+    .grow-b { transform-box: fill-box; transform-origin: left center; animation: barGrow 2.8s ease-in-out 0.9s infinite; }
+    .conduit-fwd { stroke-dasharray: 5 5; animation: dashFlow 1.2s linear infinite; }
+    .conduit-rev { stroke-dasharray: 5 5; animation: dashRev 1.2s linear infinite; }
+  </style>
+
+  <!-- Outer Frame -->
+  <g clip-path="url(#outerClip)">
+    <rect x="4" y="4" width="952" height="452" fill="url(#archBg)"/>
+    <rect x="4" y="4" width="952" height="452" fill="url(#dotGrid)"/>
+  </g>
+  <rect x="4" y="4" width="952" height="452" rx="18" fill="none" stroke="url(#rgbBorder)" stroke-width="1.5" stroke-opacity="0.65"/>
+
+  <!-- ================= HEADER STRIP ================= -->
+  <g>
+    <circle cx="34" cy="34" r="4.5" fill="#22d3ee" filter="url(#neonGlow)"/>
+    <text x="48" y="38.5" class="mono" font-size="12.5" font-weight="700" fill="#f1f5f9" letter-spacing="1.2">ECOSISTEMA &amp; ARQUITECTURA</text>
+    <text x="276" y="38.5" class="sans" font-size="12" fill="#64748b">Frontend  ⇄  Backend  ⇄  Servidores &amp; Bases de Datos  ·  Git Branching</text>
+
+    <!-- Live Status Pill -->
+    <rect x="810" y="22" width="126" height="24" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.1"/>
+    <circle class="led-a" cx="826" cy="34" r="3.6" fill="#10b981"/>
+    <text x="838" y="38" class="mono" font-size="10.2" font-weight="600" fill="#94a3b8">FULL STACK</text>
+  </g>
+
+  <!-- ================= CARD 1: FRONTEND & MOBILE ================= -->
+  <g>
+    <rect x="24" y="60" width="276" height="226" rx="14" fill="url(#frontCard)" stroke="#22d3ee" stroke-width="1.2" stroke-opacity="0.55"/>
+    <rect x="24" y="60" width="276" height="32" rx="14" fill="#22d3ee" fill-opacity="0.1"/>
+    <rect x="24" y="78" width="276" height="14" fill="#22d3ee" fill-opacity="0.1"/>
+    <circle cx="42" cy="76" r="4" fill="#22d3ee"/>
+    <text x="54" y="80" class="mono" font-size="11.5" font-weight="700" fill="#67e8f9" letter-spacing="0.8">FRONTEND &amp; MOBILE</text>
+
+    <!-- Illustration: Browser + Mobile Phone -->
+    <!-- Browser Window -->
+    <g>
+      <rect x="40" y="102" width="158" height="86" rx="8" fill="#080d18" stroke="#1e3a5f" stroke-width="1.2"/>
+      <rect x="40" y="102" width="158" height="16" rx="8" fill="#111e33"/>
+      <rect x="40" y="111" width="158" height="7" fill="#111e33"/>
+      <circle cx="50" cy="110" r="2.4" fill="#ef4444"/>
+      <circle cx="58" cy="110" r="2.4" fill="#f59e0b"/>
+      <circle cx="66" cy="110" r="2.4" fill="#10b981"/>
+      <rect x="78" y="107.5" width="76" height="5" rx="2.5" fill="#1e293b"/>
+
+      <!-- UI Layout Skeleton inside Browser -->
+      <rect x="49" y="125" width="54" height="24" rx="4" fill="#22d3ee" fill-opacity="0.18" stroke="#22d3ee" stroke-width="0.9"/>
+      <rect x="54" y="131" width="32" height="4" rx="2" fill="#67e8f9"/>
+      <rect x="54" y="139" width="22" height="3.5" rx="1.5" fill="#38bdf8" fill-opacity="0.6"/>
+
+      <!-- Mini React-style Orbit Icon inside Browser -->
+      <g transform="translate(152, 138)">
+        <ellipse rx="14" ry="5.5" fill="none" stroke="#22d3ee" stroke-width="1.1" opacity="0.85">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse rx="14" ry="5.5" fill="none" stroke="#38bdf8" stroke-width="1.1" opacity="0.85" transform="rotate(60)">
+          <animateTransform attributeName="transform" type="rotate" from="60" to="420" dur="10s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse rx="14" ry="5.5" fill="none" stroke="#a855f7" stroke-width="1.1" opacity="0.75" transform="rotate(120)">
+          <animateTransform attributeName="transform" type="rotate" from="120" to="480" dur="10s" repeatCount="indefinite"/>
+        </ellipse>
+        <circle r="2.6" fill="#67e8f9"/>
+      </g>
+
+      <!-- UI Cards Bottom Row -->
+      <rect x="49" y="156" width="42" height="23" rx="4" fill="#0f1c30" stroke="#1e293b" stroke-width="0.9"/>
+      <rect x="97" y="156" width="42" height="23" rx="4" fill="#0f1c30" stroke="#1e293b" stroke-width="0.9"/>
+      <rect x="145" y="156" width="44" height="23" rx="4" fill="#0f1c30" stroke="#1e293b" stroke-width="0.9"/>
+      <rect class="grow-a" x="54" y="163" width="28" height="3.5" rx="1.5" fill="#22d3ee"/>
+      <rect class="grow-b" x="102" y="163" width="30" height="3.5" rx="1.5" fill="#a855f7"/>
+      <rect class="grow-a" x="150" y="163" width="30" height="3.5" rx="1.5" fill="#ec4899"/>
+      <!-- Animated Scan Line -->
+      <rect class="scan" x="42" y="122" width="154" height="2" fill="#22d3ee" fill-opacity="0.45"/>
+    </g>
+
+    <!-- Mobile Phone Mockup -->
+    <g>
+      <rect x="212" y="102" width="72" height="86" rx="11" fill="#080d18" stroke="#38bdf8" stroke-width="1.2"/>
+      <rect x="236" y="107" width="24" height="3.5" rx="1.8" fill="#334155"/>
+      <rect x="219" y="116" width="58" height="22" rx="4" fill="#22d3ee" fill-opacity="0.16" stroke="#22d3ee" stroke-width="0.8"/>
+      <rect x="224" y="122" width="36" height="4" rx="2" fill="#67e8f9"/>
+      <rect x="224" y="129" width="22" height="3" rx="1.5" fill="#94a3b8"/>
+      <rect x="219" y="143" width="26" height="20" rx="4" fill="#132038"/>
+      <rect x="251" y="143" width="26" height="20" rx="4" fill="#132038"/>
+      <!-- Mobile Bottom Nav Dots -->
+      <circle cx="232" cy="175" r="2.6" fill="#22d3ee" class="led-a"/>
+      <circle cx="248" cy="175" r="2.4" fill="#475569"/>
+      <circle cx="264" cy="175" r="2.4" fill="#475569"/>
+    </g>
+
+    <!-- Frontend Language & Tool Chips -->
+    <g>
+      <rect x="36"  y="202" width="80" height="28" rx="7" fill="#0d1b2e" stroke="#22d3ee" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="76"  y="220" text-anchor="middle" class="mono" font-size="10.5" font-weight="600" fill="#e0f2fe">TypeScript</text>
+
+      <rect x="122" y="202" width="80" height="28" rx="7" fill="#0d1b2e" stroke="#38bdf8" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="162" y="220" text-anchor="middle" class="mono" font-size="10.5" font-weight="600" fill="#e0f2fe">React</text>
+
+      <rect x="208" y="202" width="80" height="28" rx="7" fill="#0d1b2e" stroke="#f43f5e" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="248" y="220" text-anchor="middle" class="mono" font-size="10.5" font-weight="600" fill="#ffe4e6">Angular</text>
+
+      <rect x="36"  y="238" width="90" height="28" rx="7" fill="#0d1b2e" stroke="#22d3ee" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="81"  y="256" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#cffafe">React Native</text>
+
+      <rect x="132" y="238" width="74" height="28" rx="7" fill="#0d1b2e" stroke="#38bdf8" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="169" y="256" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#e0f2fe">Tailwind</text>
+
+      <rect x="212" y="238" width="76" height="28" rx="7" fill="#0d1b2e" stroke="#f59e0b" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="250" y="256" text-anchor="middle" class="mono" font-size="10" font-weight="600" fill="#fef3c7">HTML/CSS/JS</text>
+    </g>
+  </g>
+
+  <!-- ================= ANIMATED CONDUIT 1: FRONT <-> BACK ================= -->
+  <g>
+    <text x="321" y="147" text-anchor="middle" class="mono" font-size="8.8" font-weight="700" fill="#38bdf8">HTTP</text>
+    <line x1="300" y1="156" x2="342" y2="156" stroke="#22d3ee" stroke-width="1.6" stroke-opacity="0.55" class="conduit-fwd"/>
+    <circle r="3.8" fill="#22d3ee" filter="url(#neonGlow)">
+      <animateMotion dur="1.5s" repeatCount="indefinite">
+        <mpath href="#flowFrontToBack"/>
+      </animateMotion>
+    </circle>
+
+    <line x1="300" y1="188" x2="342" y2="188" stroke="#ec4899" stroke-width="1.6" stroke-opacity="0.55" class="conduit-rev"/>
+    <circle r="3.8" fill="#ec4899" filter="url(#neonGlow)">
+      <animateMotion dur="1.7s" begin="-0.5s" repeatCount="indefinite">
+        <mpath href="#flowBackToFront"/>
+      </animateMotion>
+    </circle>
+    <text x="321" y="203" text-anchor="middle" class="mono" font-size="8.8" font-weight="700" fill="#f472b6">JSON</text>
+  </g>
+
+  <!-- ================= CARD 2: BACKEND & APIs ================= -->
+  <g>
+    <rect x="342" y="60" width="276" height="226" rx="14" fill="url(#backCard)" stroke="#a855f7" stroke-width="1.2" stroke-opacity="0.58"/>
+    <rect x="342" y="60" width="276" height="32" rx="14" fill="#a855f7" fill-opacity="0.12"/>
+    <rect x="342" y="78" width="276" height="14" fill="#a855f7" fill-opacity="0.12"/>
+    <circle cx="360" cy="76" r="4" fill="#a855f7"/>
+    <text x="372" y="80" class="mono" font-size="11.5" font-weight="700" fill="#d8b4fe" letter-spacing="0.8">BACKEND &amp; APIs</text>
+
+    <!-- Illustration: Rotating API Core + REST Endpoints & JWT Shield -->
+    <g>
+      <!-- Left: Rotating Hexagonal Engine Gear -->
+      <g transform="translate(402, 145)">
+        <circle r="36" fill="#0d0b1e" stroke="#a855f7" stroke-width="1.1" stroke-opacity="0.4"/>
+        <!-- Rotating Outer Dashed Gear Ring -->
+        <circle r="29" fill="none" stroke="#c084fc" stroke-width="3.5" stroke-dasharray="6 6.2" stroke-opacity="0.85">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="14s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Counter-Rotating Inner Ring -->
+        <circle r="20" fill="none" stroke="#22d3ee" stroke-width="1.6" stroke-dasharray="10 6" stroke-opacity="0.8">
+          <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="9s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Glowing Core Hexagon -->
+        <polygon class="pulse" points="0,-13 11.2,-6.5 11.2,6.5 0,13 -11.2,6.5 -11.2,-6.5" fill="#a855f7" fill-opacity="0.28" stroke="#e879f9" stroke-width="1.4"/>
+        <text x="0" y="3.5" text-anchor="middle" class="mono" font-size="8.5" font-weight="700" fill="#ffffff">API</text>
+      </g>
+
+      <!-- Right: Live Endpoint Cards + JWT Shield -->
+      <g>
+        <!-- Endpoint 1 -->
+        <rect x="454" y="105" width="148" height="25" rx="6" fill="#0b0e1f" stroke="#3b2866" stroke-width="1"/>
+        <rect x="460" y="111" width="32" height="13" rx="3" fill="#10b981" fill-opacity="0.22"/>
+        <text x="476" y="120.5" text-anchor="middle" class="mono" font-size="8.2" font-weight="700" fill="#34d399">POST</text>
+        <text x="498" y="121" class="mono" font-size="9.5" fill="#e2e8f0">/auth/jwt</text>
+        <circle class="led-a" cx="590" cy="117.5" r="3" fill="#10b981"/>
+
+        <!-- Endpoint 2 -->
+        <rect x="454" y="135" width="148" height="25" rx="6" fill="#0b0e1f" stroke="#3b2866" stroke-width="1"/>
+        <rect x="460" y="141" width="32" height="13" rx="3" fill="#22d3ee" fill-opacity="0.2"/>
+        <text x="476" y="150.5" text-anchor="middle" class="mono" font-size="8.2" font-weight="700" fill="#22d3ee">GET</text>
+        <text x="498" y="151" class="mono" font-size="9.5" fill="#e2e8f0">/v1/core</text>
+        <circle class="led-b" cx="590" cy="147.5" r="3" fill="#22d3ee"/>
+
+        <!-- Security / RBAC Bar -->
+        <rect x="454" y="165" width="148" height="23" rx="6" fill="#16102e" stroke="#a855f7" stroke-width="0.9" stroke-opacity="0.65"/>
+        <!-- Mini Shield Icon -->
+        <path d="M 467 170 L 473 172.2 L 473 177.2 C 473 180.4, 470 182.6, 467 183.8 C 464 182.6, 461 180.4, 461 177.2 L 461 172.2 Z" fill="#a855f7" fill-opacity="0.35" stroke="#d8b4fe" stroke-width="1"/>
+        <text x="481" y="179.5" class="mono" font-size="9.2" font-weight="600" fill="#d8b4fe">JWT · RBAC · REST</text>
+      </g>
+    </g>
+
+    <!-- Backend Language & Tool Chips -->
+    <g>
+      <rect x="354" y="202" width="72" height="28" rx="7" fill="#16112b" stroke="#f97316" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="390" y="220" text-anchor="middle" class="mono" font-size="10.5" font-weight="600" fill="#ffedd5">Java 21</text>
+
+      <rect x="432" y="202" width="90" height="28" rx="7" fill="#16112b" stroke="#22c55e" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="477" y="220" text-anchor="middle" class="mono" font-size="10.5" font-weight="600" fill="#dcfce7">Spring Boot</text>
+
+      <rect x="528" y="202" width="78" height="28" rx="7" fill="#16112b" stroke="#3b82f6" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="567" y="220" text-anchor="middle" class="mono" font-size="10.5" font-weight="600" fill="#dbeafe">Python</text>
+
+      <rect x="354" y="238" width="72" height="28" rx="7" fill="#16112b" stroke="#84cc16" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="390" y="256" text-anchor="middle" class="mono" font-size="10.5" font-weight="600" fill="#ecfccb">Node.js</text>
+
+      <rect x="432" y="238" width="90" height="28" rx="7" fill="#16112b" stroke="#a855f7" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="477" y="256" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#f3e8ff">REST · JWT</text>
+
+      <rect x="528" y="238" width="78" height="28" rx="7" fill="#16112b" stroke="#ec4899" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="567" y="256" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#fce7f3">Flet · JPA</text>
+    </g>
+  </g>
+
+  <!-- ================= ANIMATED CONDUIT 2: BACK <-> SERVERS ================= -->
+  <g>
+    <text x="639" y="147" text-anchor="middle" class="mono" font-size="8.8" font-weight="700" fill="#c084fc">SQL</text>
+    <line x1="618" y1="156" x2="660" y2="156" stroke="#a855f7" stroke-width="1.6" stroke-opacity="0.55" class="conduit-fwd"/>
+    <circle r="3.8" fill="#a855f7" filter="url(#neonGlow)">
+      <animateMotion dur="1.4s" begin="-0.25s" repeatCount="indefinite">
+        <mpath href="#flowBackToSrv"/>
+      </animateMotion>
+    </circle>
+
+    <line x1="618" y1="188" x2="660" y2="188" stroke="#10b981" stroke-width="1.6" stroke-opacity="0.55" class="conduit-rev"/>
+    <circle r="3.8" fill="#10b981" filter="url(#neonGlow)">
+      <animateMotion dur="1.6s" begin="-0.8s" repeatCount="indefinite">
+        <mpath href="#flowSrvToBack"/>
+      </animateMotion>
+    </circle>
+    <text x="639" y="203" text-anchor="middle" class="mono" font-size="8.8" font-weight="700" fill="#34d399">DATA</text>
+  </g>
+
+  <!-- ================= CARD 3: SERVIDORES & BASES DE DATOS ================= -->
+  <g>
+    <rect x="660" y="60" width="276" height="226" rx="14" fill="url(#srvCard)" stroke="#10b981" stroke-width="1.2" stroke-opacity="0.58"/>
+    <rect x="660" y="60" width="276" height="32" rx="14" fill="#10b981" fill-opacity="0.11"/>
+    <rect x="660" y="78" width="276" height="14" fill="#10b981" fill-opacity="0.11"/>
+    <circle cx="678" cy="76" r="4" fill="#10b981"/>
+    <text x="690" y="80" class="mono" font-size="11.2" font-weight="700" fill="#6ee7b7" letter-spacing="0.6">SERVIDORES &amp; BASES DE DATOS</text>
+
+    <!-- Illustration: Animated 3-Bay Server Rack + Database Cylinder -->
+    <g>
+      <!-- Server Rack Enclosure -->
+      <rect x="678" y="102" width="132" height="86" rx="9" fill="#070e17" stroke="#1e3f3a" stroke-width="1.3"/>
+
+      <!-- Server Blade 1 -->
+      <rect x="686" y="109" width="116" height="20" rx="4" fill="#0f1d29" stroke="#22d3ee" stroke-width="0.7" stroke-opacity="0.5"/>
+      <rect x="692" y="116" width="38" height="2.5" rx="1" fill="#334155"/>
+      <rect x="692" y="121" width="26" height="2.5" rx="1" fill="#334155"/>
+      <circle class="led-a" cx="774" cy="119" r="2.8" fill="#10b981" filter="url(#neonGlow)"/>
+      <circle class="led-b" cx="784" cy="119" r="2.8" fill="#22d3ee"/>
+      <circle cx="794" cy="119" r="2.5" fill="#475569"/>
+
+      <!-- Server Blade 2 -->
+      <rect x="686" y="135" width="116" height="20" rx="4" fill="#0f1d29" stroke="#10b981" stroke-width="0.7" stroke-opacity="0.5"/>
+      <rect x="692" y="142" width="44" height="2.5" rx="1" fill="#334155"/>
+      <rect x="692" y="147" width="30" height="2.5" rx="1" fill="#334155"/>
+      <circle class="led-c" cx="774" cy="145" r="2.8" fill="#10b981" filter="url(#neonGlow)"/>
+      <circle class="led-a" cx="784" cy="145" r="2.8" fill="#f59e0b"/>
+      <circle class="led-b" cx="794" cy="145" r="2.8" fill="#22d3ee"/>
+
+      <!-- Server Blade 3 -->
+      <rect x="686" y="161" width="116" height="20" rx="4" fill="#0f1d29" stroke="#a855f7" stroke-width="0.7" stroke-opacity="0.5"/>
+      <rect x="692" y="168" width="34" height="2.5" rx="1" fill="#334155"/>
+      <rect x="692" y="173" width="42" height="2.5" rx="1" fill="#334155"/>
+      <circle class="led-b" cx="774" cy="171" r="2.8" fill="#10b981" filter="url(#neonGlow)"/>
+      <circle class="led-c" cx="784" cy="171" r="2.8" fill="#ec4899"/>
+      <circle class="led-a" cx="794" cy="171" r="2.8" fill="#10b981"/>
+
+      <!-- Sync Link between Server Rack & DB -->
+      <line x1="810" y1="145" x2="834" y2="145" stroke="#10b981" stroke-width="1.4" stroke-dasharray="3 3" class="conduit-fwd"/>
+
+      <!-- Glowing Database Cylinder -->
+      <g transform="translate(836, 107)">
+        <!-- Cylinder Body -->
+        <path d="M 4 14 L 4 64 C 4 72, 76 72, 76 64 L 76 14 Z" fill="#0a1f24" stroke="#10b981" stroke-width="1.3"/>
+        <!-- Middle Data Ring -->
+        <path d="M 4 38 C 4 46, 76 46, 76 38" fill="none" stroke="#10b981" stroke-width="1.1" stroke-opacity="0.75"/>
+        <path d="M 4 51 C 4 59, 76 59, 76 51" fill="none" stroke="#22d3ee" stroke-width="1.1" stroke-opacity="0.6"/>
+        <!-- Top Platter -->
+        <ellipse cx="40" cy="14" rx="36" ry="10" fill="#113836" stroke="#34d399" stroke-width="1.4"/>
+        <ellipse class="pulse" cx="40" cy="14" rx="20" ry="5" fill="#34d399" fill-opacity="0.35"/>
+        <text x="40" y="38" text-anchor="middle" class="mono" font-size="8.6" font-weight="700" fill="#6ee7b7">SQL / DB</text>
+      </g>
+    </g>
+
+    <!-- Servers & DB Chips -->
+    <g>
+      <rect x="672" y="202" width="86" height="28" rx="7" fill="#0b1f24" stroke="#38bdf8" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="715" y="220" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#e0f2fe">PostgreSQL</text>
+
+      <rect x="764" y="202" width="80" height="28" rx="7" fill="#0b1f24" stroke="#10b981" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="804" y="220" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#d1fae5">Supabase</text>
+
+      <rect x="850" y="202" width="74" height="28" rx="7" fill="#0b1f24" stroke="#f59e0b" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="887" y="220" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#fef3c7">Linux</text>
+
+      <rect x="672" y="238" width="72" height="28" rx="7" fill="#0b1f24" stroke="#0ea5e9" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="708" y="256" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#e0f2fe">Docker</text>
+
+      <rect x="750" y="238" width="72" height="28" rx="7" fill="#0b1f24" stroke="#22d3ee" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="786" y="256" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#cffafe">Render</text>
+
+      <rect x="828" y="238" width="96" height="28" rx="7" fill="#0b1f24" stroke="#34d399" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="876" y="256" text-anchor="middle" class="mono" font-size="10" font-weight="600" fill="#d1fae5">Nginx · Cloud</text>
+    </g>
+  </g>
+
+  <!-- ================= VERTICAL DEPLOY PIPELINES (GIT -> STACK) ================= -->
+  <g>
+    <line x1="162" y1="314" x2="162" y2="286" stroke="#22d3ee" stroke-width="1.4" stroke-opacity="0.55" stroke-dasharray="4 4"/>
+    <circle r="3.2" fill="#22d3ee" filter="url(#neonGlow)">
+      <animateMotion dur="1.8s" repeatCount="indefinite">
+        <mpath href="#deployFront"/>
+      </animateMotion>
+    </circle>
+
+    <line x1="480" y1="314" x2="480" y2="286" stroke="#a855f7" stroke-width="1.4" stroke-opacity="0.55" stroke-dasharray="4 4"/>
+    <circle r="3.2" fill="#a855f7" filter="url(#neonGlow)">
+      <animateMotion dur="1.8s" begin="-0.6s" repeatCount="indefinite">
+        <mpath href="#deployBack"/>
+      </animateMotion>
+    </circle>
+
+    <line x1="798" y1="314" x2="798" y2="286" stroke="#10b981" stroke-width="1.4" stroke-opacity="0.55" stroke-dasharray="4 4"/>
+    <circle r="3.2" fill="#10b981" filter="url(#neonGlow)">
+      <animateMotion dur="1.8s" begin="-1.2s" repeatCount="indefinite">
+        <mpath href="#deploySrv"/>
+      </animateMotion>
+    </circle>
+  </g>
+
+  <!-- ================= CARD 4: GIT BRANCHING & DEV TOOLS ================= -->
+  <g>
+    <rect x="24" y="314" width="912" height="124" rx="14" fill="url(#gitCard)" stroke="#ec4899" stroke-width="1.2" stroke-opacity="0.55"/>
+
+    <!-- LEFT HALF: Animated Git Branching Graph -->
+    <g>
+      <circle cx="44" cy="333" r="4" fill="#ec4899"/>
+      <text x="56" y="337" class="mono" font-size="11.2" font-weight="700" fill="#f9a8d4" letter-spacing="0.8">GIT WORKFLOW · BRANCHING (FRONT &amp; BACK)</text>
+
+      <!-- Branch Label Pills -->
+      <rect x="40" y="378" width="42" height="20" rx="5" fill="#0e2236" stroke="#22d3ee" stroke-width="0.9"/>
+      <text x="61" y="391" text-anchor="middle" class="mono" font-size="9" font-weight="700" fill="#67e8f9">main</text>
+
+      <!-- Main Branch Line -->
+      <line x1="82" y1="388" x2="452" y2="388" stroke="#22d3ee" stroke-width="2.6" stroke-linecap="round"/>
+
+      <!-- Feature/Front Branch Curve (Pink) -->
+      <path d="M 118 388 C 138 388, 144 365, 168 365 L 262 365 C 286 365, 294 388, 316 388" fill="none" stroke="#ec4899" stroke-width="2.2" stroke-linecap="round"/>
+      <text x="215" y="357" text-anchor="middle" class="mono" font-size="8.8" font-weight="600" fill="#f472b6">feat/frontend</text>
+
+      <!-- Feature/Back Branch Curve (Violet) -->
+      <path d="M 166 388 C 188 388, 194 412, 220 412 L 366 412 C 392 412, 400 388, 424 388" fill="none" stroke="#a855f7" stroke-width="2.2" stroke-linecap="round"/>
+      <text x="293" y="428" text-anchor="middle" class="mono" font-size="8.8" font-weight="600" fill="#c084fc">feat/backend-server</text>
+
+      <!-- Commit Nodes -->
+      <circle cx="118" cy="388" r="5" fill="#090d16" stroke="#22d3ee" stroke-width="2.2"/>
+      <circle cx="166" cy="388" r="5" fill="#090d16" stroke="#22d3ee" stroke-width="2.2"/>
+      <circle cx="215" cy="365" r="4.8" fill="#090d16" stroke="#ec4899" stroke-width="2.2"/>
+      <circle cx="316" cy="388" r="5.5" fill="#22d3ee" stroke="#ffffff" stroke-width="1.5"/>
+      <circle cx="256" cy="412" r="4.8" fill="#090d16" stroke="#a855f7" stroke-width="2.2"/>
+      <circle cx="348" cy="412" r="4.8" fill="#090d16" stroke="#a855f7" stroke-width="2.2"/>
+      <circle cx="424" cy="388" r="6" fill="#10b981" stroke="#ffffff" stroke-width="1.6" filter="url(#neonGlow)"/>
+
+      <!-- Animated Traveling Commit Pulses -->
+      <circle r="4" fill="#f472b6" filter="url(#neonGlow)">
+        <animateMotion dur="3.4s" begin="-0.4s" repeatCount="indefinite">
+          <mpath href="#gitFrontPath"/>
+        </animateMotion>
+      </circle>
+      <circle r="4" fill="#c084fc" filter="url(#neonGlow)">
+        <animateMotion dur="3.8s" begin="-1.6s" repeatCount="indefinite">
+          <mpath href="#gitBackPath"/>
+        </animateMotion>
+      </circle>
+
+      <!-- Release Tag Pill -->
+      <rect x="434" y="359" width="42" height="17" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="0.9"/>
+      <text x="455" y="370.5" text-anchor="middle" class="mono" font-size="8.6" font-weight="700" fill="#6ee7b7">deploy</text>
+    </g>
+
+    <!-- Vertical Divider -->
+    <line x1="494" y1="328" x2="494" y2="424" stroke="#334155" stroke-width="1.1" stroke-dasharray="4 4"/>
+
+    <!-- RIGHT HALF: Dev Tools & Testing Suite -->
+    <g>
+      <text x="512" y="340" class="mono" font-size="11.2" font-weight="700" fill="#fde68a" letter-spacing="0.8">HERRAMIENTAS &amp; TESTING</text>
+
+      <!-- Passing CI Badge -->
+      <rect x="802" y="325" width="114" height="21" rx="10.5" fill="#064e3b" fill-opacity="0.55" stroke="#10b981" stroke-width="0.9"/>
+      <circle class="led-a" cx="816" cy="335.5" r="3.2" fill="#10b981"/>
+      <text x="826" y="339" class="mono" font-size="9.2" font-weight="700" fill="#6ee7b7">CI / READY</text>
+
+      <!-- Tools Row 1 -->
+      <rect x="512" y="356" width="98"  height="28" rx="7" fill="#14182c" stroke="#f97316" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="561" y="374" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#ffedd5">Git &amp; GitHub</text>
+
+      <rect x="618" y="356" width="86"  height="28" rx="7" fill="#14182c" stroke="#38bdf8" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="661" y="374" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#e0f2fe">VS Code</text>
+
+      <rect x="712" y="356" width="106" height="28" rx="7" fill="#14182c" stroke="#ec4899" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="765" y="374" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#fce7f3">IntelliJ IDEA</text>
+
+      <rect x="826" y="356" width="90"  height="28" rx="7" fill="#14182c" stroke="#fb923c" stroke-width="0.9" stroke-opacity="0.65"/>
+      <text x="871" y="374" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#ffedd5">Postman</text>
+
+      <!-- Tools Row 2 -->
+      <rect x="512" y="394" width="76"  height="28" rx="7" fill="#14182c" stroke="#ef4444" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="550" y="412" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#fee2e2">Maven</text>
+
+      <rect x="596" y="394" width="72"  height="28" rx="7" fill="#14182c" stroke="#f43f5e" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="632" y="412" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#ffe4e6">Jest</text>
+
+      <rect x="676" y="394" width="80"  height="28" rx="7" fill="#14182c" stroke="#3b82f6" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="716" y="412" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#dbeafe">Pytest</text>
+
+      <rect x="764" y="394" width="80"  height="28" rx="7" fill="#14182c" stroke="#a855f7" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="804" y="412" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#f3e8ff">Vite</text>
+
+      <rect x="852" y="394" width="64"  height="28" rx="7" fill="#14182c" stroke="#10b981" stroke-width="0.9" stroke-opacity="0.6"/>
+      <text x="884" y="412" text-anchor="middle" class="mono" font-size="10.2" font-weight="600" fill="#d1fae5">Bash</text>
+    </g>
+  </g>
+</svg>
